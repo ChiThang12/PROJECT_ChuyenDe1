@@ -1,0 +1,55 @@
+module part5 (SW, HEX0, HEX1, HEX2, HEX3, HEX4);
+    input [17:0] SW;
+    output [0:6] HEX0, HEX1, HEX2, HEX3, HEX4;
+    wire [2:0] M0, M1, M2, M3, M4;
+
+    mux_3bit_5to1 Mux0(SW[17:15], SW[14:12], SW[11:9], SW[8:6], SW[5:3], SW[2:0], M0);
+    char_7seg H0(M0, HEX0);
+    
+    mux_3bit_5to1 Mux1(SW[17:15], SW[11:9], SW[8:6], SW[5:3], SW[2:0], SW[14:12], M1);
+    char_7seg H1(M1, HEX1);
+    
+    mux_3bit_5to1 Mux2(SW[17:15], SW[8:6], SW[5:3], SW[2:0], SW[14:12], SW[11:9], M2);
+    char_7seg H2(M2, HEX2);
+    
+    mux_3bit_5to1 Mux3(SW[17:15], SW[5:3], SW[2:0], SW[14:12], SW[11:9], SW[8:6], M3);
+    char_7seg H3(M3, HEX3);
+    
+    mux_3bit_5to1 Mux4(SW[17:15], SW[2:0], SW[14:12], SW[11:9], SW[8:6], SW[5:3], M4);
+    char_7seg H4(M4, HEX4);
+    
+endmodule
+
+// implements a 3-bit wide 5-to-1 multiplexer
+module mux_3bit_5to1(S, U, V, W, X, Y, M);
+    input [2:0] S, U, V, W, X, Y;
+    output reg [2:0] M;
+
+    always @(*) begin
+        case(S)
+            3'b000 : M = U;
+            3'b001 : M = V;
+            3'b010 : M = W;
+            3'b011 : M = X;
+            3'b100 : M = Y;
+            default: M = 3'b000;
+        endcase
+    end
+endmodule
+
+// implements a 7-segment decoder for H, E, L, O, and 'blank'
+module char_7seg (C, Display);
+    input [2:0] C;
+    output reg [0:6] Display;
+
+    always @(*) begin
+        case(C)
+            3'b000 : Display = 7'b1001000; // H
+            3'b001 : Display = 7'b0110000; // E
+            3'b010 : Display = 7'b1110001; // L
+            3'b011 : Display = 7'b0000001; // O
+            3'b100 : Display = 7'b1111111; 
+            default: Display = 7'b1111111; 
+        endcase
+    end
+endmodule

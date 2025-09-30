@@ -1,0 +1,1155 @@
+TimeQuest Timing Analyzer report for part4
+Tue Sep 30 20:24:41 2025
+Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. TimeQuest Timing Analyzer Summary
+  3. Parallel Compilation
+  4. Clocks
+  5. Slow Model Fmax Summary
+  6. Slow Model Setup Summary
+  7. Slow Model Hold Summary
+  8. Slow Model Recovery Summary
+  9. Slow Model Removal Summary
+ 10. Slow Model Minimum Pulse Width Summary
+ 11. Slow Model Setup: 'CLOCK_50'
+ 12. Slow Model Hold: 'CLOCK_50'
+ 13. Slow Model Minimum Pulse Width: 'CLOCK_50'
+ 14. Setup Times
+ 15. Hold Times
+ 16. Clock to Output Times
+ 17. Minimum Clock to Output Times
+ 18. Propagation Delay
+ 19. Minimum Propagation Delay
+ 20. Fast Model Setup Summary
+ 21. Fast Model Hold Summary
+ 22. Fast Model Recovery Summary
+ 23. Fast Model Removal Summary
+ 24. Fast Model Minimum Pulse Width Summary
+ 25. Fast Model Setup: 'CLOCK_50'
+ 26. Fast Model Hold: 'CLOCK_50'
+ 27. Fast Model Minimum Pulse Width: 'CLOCK_50'
+ 28. Setup Times
+ 29. Hold Times
+ 30. Clock to Output Times
+ 31. Minimum Clock to Output Times
+ 32. Propagation Delay
+ 33. Minimum Propagation Delay
+ 34. Multicorner Timing Analysis Summary
+ 35. Setup Times
+ 36. Hold Times
+ 37. Clock to Output Times
+ 38. Minimum Clock to Output Times
+ 39. Progagation Delay
+ 40. Minimum Progagation Delay
+ 41. Setup Transfers
+ 42. Hold Transfers
+ 43. Report TCCS
+ 44. Report RSKM
+ 45. Unconstrained Paths
+ 46. TimeQuest Timing Analyzer Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2013 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++----------------------------------------------------------------------------------------+
+; TimeQuest Timing Analyzer Summary                                                      ;
++--------------------+-------------------------------------------------------------------+
+; Quartus II Version ; Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition ;
+; Revision Name      ; part4                                                             ;
+; Device Family      ; Cyclone II                                                        ;
+; Device Name        ; EP2C35F672C6                                                      ;
+; Timing Models      ; Final                                                             ;
+; Delay Model        ; Combined                                                          ;
+; Rise/Fall Delays   ; Unavailable                                                       ;
++--------------------+-------------------------------------------------------------------+
+
+
+Parallel compilation was disabled, but you have multiple processors available. Enable parallel compilation to reduce compilation time.
++-------------------------------------+
+; Parallel Compilation                ;
++----------------------------+--------+
+; Processors                 ; Number ;
++----------------------------+--------+
+; Number detected on machine ; 16     ;
+; Maximum allowed            ; 1      ;
++----------------------------+--------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clocks                                                                                                                                                                               ;
++------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+--------------+
+; Clock Name ; Type ; Period ; Frequency  ; Rise  ; Fall  ; Duty Cycle ; Divide by ; Multiply by ; Phase ; Offset ; Edge List ; Edge Shift ; Inverted ; Master ; Source ; Targets      ;
++------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+--------------+
+; CLOCK_50   ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { CLOCK_50 } ;
++------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+--------------+
+
+
++--------------------------------------------------+
+; Slow Model Fmax Summary                          ;
++------------+-----------------+------------+------+
+; Fmax       ; Restricted Fmax ; Clock Name ; Note ;
++------------+-----------------+------------+------+
+; 213.17 MHz ; 213.17 MHz      ; CLOCK_50   ;      ;
++------------+-----------------+------------+------+
+This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
+
+
++-----------------------------------+
+; Slow Model Setup Summary          ;
++----------+--------+---------------+
+; Clock    ; Slack  ; End Point TNS ;
++----------+--------+---------------+
+; CLOCK_50 ; -3.691 ; -92.482       ;
++----------+--------+---------------+
+
+
++----------------------------------+
+; Slow Model Hold Summary          ;
++----------+-------+---------------+
+; Clock    ; Slack ; End Point TNS ;
++----------+-------+---------------+
+; CLOCK_50 ; 0.526 ; 0.000         ;
++----------+-------+---------------+
+
+
+-------------------------------
+; Slow Model Recovery Summary ;
+-------------------------------
+No paths to report.
+
+
+------------------------------
+; Slow Model Removal Summary ;
+------------------------------
+No paths to report.
+
+
++----------------------------------------+
+; Slow Model Minimum Pulse Width Summary ;
++----------+--------+--------------------+
+; Clock    ; Slack  ; End Point TNS      ;
++----------+--------+--------------------+
+; CLOCK_50 ; -1.380 ; -43.380            ;
++----------+--------+--------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Slow Model Setup: 'CLOCK_50'                                                                                                                                                             ;
++--------+-----------------------------------------------------+-----------------------------------------------------+--------------+-------------+--------------+------------+------------+
+; Slack  ; From Node                                           ; To Node                                             ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++--------+-----------------------------------------------------+-----------------------------------------------------+--------------+-------------+--------------+------------+------------+
+; -3.691 ; logic_top:logic_top_inst|led:led_driver|counter[0]  ; logic_top:logic_top_inst|led:led_driver|counter[26] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.727      ;
+; -3.581 ; logic_top:logic_top_inst|led:led_driver|counter[1]  ; logic_top:logic_top_inst|led:led_driver|counter[26] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.617      ;
+; -3.550 ; logic_top:logic_top_inst|led:led_driver|counter[2]  ; logic_top:logic_top_inst|led:led_driver|counter[26] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.586      ;
+; -3.479 ; logic_top:logic_top_inst|led:led_driver|counter[3]  ; logic_top:logic_top_inst|led:led_driver|counter[26] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.515      ;
+; -3.475 ; logic_top:logic_top_inst|led:led_driver|counter[0]  ; logic_top:logic_top_inst|led:led_driver|counter[23] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.511      ;
+; -3.414 ; logic_top:logic_top_inst|led:led_driver|counter[0]  ; logic_top:logic_top_inst|led:led_driver|counter[25] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.450      ;
+; -3.372 ; logic_top:logic_top_inst|led:led_driver|counter[4]  ; logic_top:logic_top_inst|led:led_driver|counter[26] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.408      ;
+; -3.365 ; logic_top:logic_top_inst|led:led_driver|counter[1]  ; logic_top:logic_top_inst|led:led_driver|counter[23] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.401      ;
+; -3.339 ; logic_top:logic_top_inst|led:led_driver|counter[0]  ; logic_top:logic_top_inst|led:led_driver|counter[24] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.375      ;
+; -3.338 ; logic_top:logic_top_inst|led:led_driver|counter[17] ; logic_top:logic_top_inst|led:led_driver|counter[15] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.374      ;
+; -3.338 ; logic_top:logic_top_inst|led:led_driver|counter[17] ; logic_top:logic_top_inst|led:led_driver|counter[16] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.374      ;
+; -3.338 ; logic_top:logic_top_inst|led:led_driver|counter[17] ; logic_top:logic_top_inst|led:led_driver|counter[17] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.374      ;
+; -3.338 ; logic_top:logic_top_inst|led:led_driver|counter[17] ; logic_top:logic_top_inst|led:led_driver|counter[18] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.374      ;
+; -3.338 ; logic_top:logic_top_inst|led:led_driver|counter[17] ; logic_top:logic_top_inst|led:led_driver|counter[19] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.374      ;
+; -3.338 ; logic_top:logic_top_inst|led:led_driver|counter[17] ; logic_top:logic_top_inst|led:led_driver|counter[20] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.374      ;
+; -3.338 ; logic_top:logic_top_inst|led:led_driver|counter[17] ; logic_top:logic_top_inst|led:led_driver|counter[21] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.374      ;
+; -3.338 ; logic_top:logic_top_inst|led:led_driver|counter[17] ; logic_top:logic_top_inst|led:led_driver|counter[22] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.374      ;
+; -3.334 ; logic_top:logic_top_inst|led:led_driver|counter[2]  ; logic_top:logic_top_inst|led:led_driver|counter[23] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.370      ;
+; -3.304 ; logic_top:logic_top_inst|led:led_driver|counter[1]  ; logic_top:logic_top_inst|led:led_driver|counter[25] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.340      ;
+; -3.280 ; logic_top:logic_top_inst|led:led_driver|counter[8]  ; logic_top:logic_top_inst|led:led_driver|counter[15] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 4.318      ;
+; -3.280 ; logic_top:logic_top_inst|led:led_driver|counter[8]  ; logic_top:logic_top_inst|led:led_driver|counter[16] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 4.318      ;
+; -3.280 ; logic_top:logic_top_inst|led:led_driver|counter[8]  ; logic_top:logic_top_inst|led:led_driver|counter[17] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 4.318      ;
+; -3.280 ; logic_top:logic_top_inst|led:led_driver|counter[8]  ; logic_top:logic_top_inst|led:led_driver|counter[18] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 4.318      ;
+; -3.280 ; logic_top:logic_top_inst|led:led_driver|counter[8]  ; logic_top:logic_top_inst|led:led_driver|counter[19] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 4.318      ;
+; -3.280 ; logic_top:logic_top_inst|led:led_driver|counter[8]  ; logic_top:logic_top_inst|led:led_driver|counter[20] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 4.318      ;
+; -3.280 ; logic_top:logic_top_inst|led:led_driver|counter[8]  ; logic_top:logic_top_inst|led:led_driver|counter[21] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 4.318      ;
+; -3.280 ; logic_top:logic_top_inst|led:led_driver|counter[8]  ; logic_top:logic_top_inst|led:led_driver|counter[22] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 4.318      ;
+; -3.273 ; logic_top:logic_top_inst|led:led_driver|counter[2]  ; logic_top:logic_top_inst|led:led_driver|counter[25] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.309      ;
+; -3.263 ; logic_top:logic_top_inst|led:led_driver|counter[3]  ; logic_top:logic_top_inst|led:led_driver|counter[23] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.299      ;
+; -3.251 ; logic_top:logic_top_inst|led:led_driver|counter[5]  ; logic_top:logic_top_inst|led:led_driver|counter[26] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.287      ;
+; -3.229 ; logic_top:logic_top_inst|led:led_driver|counter[1]  ; logic_top:logic_top_inst|led:led_driver|counter[24] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.265      ;
+; -3.202 ; logic_top:logic_top_inst|led:led_driver|counter[3]  ; logic_top:logic_top_inst|led:led_driver|counter[25] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.238      ;
+; -3.199 ; logic_top:logic_top_inst|led:led_driver|counter[14] ; logic_top:logic_top_inst|led:led_driver|counter[26] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.235      ;
+; -3.198 ; logic_top:logic_top_inst|led:led_driver|counter[2]  ; logic_top:logic_top_inst|led:led_driver|counter[24] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.234      ;
+; -3.186 ; logic_top:logic_top_inst|led:led_driver|counter[9]  ; logic_top:logic_top_inst|led:led_driver|counter[15] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 4.224      ;
+; -3.186 ; logic_top:logic_top_inst|led:led_driver|counter[9]  ; logic_top:logic_top_inst|led:led_driver|counter[16] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 4.224      ;
+; -3.186 ; logic_top:logic_top_inst|led:led_driver|counter[9]  ; logic_top:logic_top_inst|led:led_driver|counter[17] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 4.224      ;
+; -3.186 ; logic_top:logic_top_inst|led:led_driver|counter[9]  ; logic_top:logic_top_inst|led:led_driver|counter[18] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 4.224      ;
+; -3.186 ; logic_top:logic_top_inst|led:led_driver|counter[9]  ; logic_top:logic_top_inst|led:led_driver|counter[19] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 4.224      ;
+; -3.186 ; logic_top:logic_top_inst|led:led_driver|counter[9]  ; logic_top:logic_top_inst|led:led_driver|counter[20] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 4.224      ;
+; -3.186 ; logic_top:logic_top_inst|led:led_driver|counter[9]  ; logic_top:logic_top_inst|led:led_driver|counter[21] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 4.224      ;
+; -3.186 ; logic_top:logic_top_inst|led:led_driver|counter[9]  ; logic_top:logic_top_inst|led:led_driver|counter[22] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 4.224      ;
+; -3.157 ; logic_top:logic_top_inst|led:led_driver|counter[16] ; logic_top:logic_top_inst|led:led_driver|counter[15] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.193      ;
+; -3.157 ; logic_top:logic_top_inst|led:led_driver|counter[16] ; logic_top:logic_top_inst|led:led_driver|counter[16] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.193      ;
+; -3.157 ; logic_top:logic_top_inst|led:led_driver|counter[16] ; logic_top:logic_top_inst|led:led_driver|counter[17] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.193      ;
+; -3.157 ; logic_top:logic_top_inst|led:led_driver|counter[16] ; logic_top:logic_top_inst|led:led_driver|counter[18] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.193      ;
+; -3.157 ; logic_top:logic_top_inst|led:led_driver|counter[16] ; logic_top:logic_top_inst|led:led_driver|counter[19] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.193      ;
+; -3.157 ; logic_top:logic_top_inst|led:led_driver|counter[16] ; logic_top:logic_top_inst|led:led_driver|counter[20] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.193      ;
+; -3.157 ; logic_top:logic_top_inst|led:led_driver|counter[16] ; logic_top:logic_top_inst|led:led_driver|counter[21] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.193      ;
+; -3.157 ; logic_top:logic_top_inst|led:led_driver|counter[16] ; logic_top:logic_top_inst|led:led_driver|counter[22] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.193      ;
+; -3.156 ; logic_top:logic_top_inst|led:led_driver|counter[4]  ; logic_top:logic_top_inst|led:led_driver|counter[23] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.192      ;
+; -3.149 ; logic_top:logic_top_inst|led:led_driver|counter[6]  ; logic_top:logic_top_inst|led:led_driver|counter[26] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.185      ;
+; -3.130 ; logic_top:logic_top_inst|led:led_driver|counter[21] ; logic_top:logic_top_inst|led:led_driver|counter[15] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.166      ;
+; -3.130 ; logic_top:logic_top_inst|led:led_driver|counter[21] ; logic_top:logic_top_inst|led:led_driver|counter[16] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.166      ;
+; -3.130 ; logic_top:logic_top_inst|led:led_driver|counter[21] ; logic_top:logic_top_inst|led:led_driver|counter[17] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.166      ;
+; -3.130 ; logic_top:logic_top_inst|led:led_driver|counter[21] ; logic_top:logic_top_inst|led:led_driver|counter[18] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.166      ;
+; -3.130 ; logic_top:logic_top_inst|led:led_driver|counter[21] ; logic_top:logic_top_inst|led:led_driver|counter[19] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.166      ;
+; -3.130 ; logic_top:logic_top_inst|led:led_driver|counter[21] ; logic_top:logic_top_inst|led:led_driver|counter[20] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.166      ;
+; -3.130 ; logic_top:logic_top_inst|led:led_driver|counter[21] ; logic_top:logic_top_inst|led:led_driver|counter[21] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.166      ;
+; -3.130 ; logic_top:logic_top_inst|led:led_driver|counter[21] ; logic_top:logic_top_inst|led:led_driver|counter[22] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.166      ;
+; -3.127 ; logic_top:logic_top_inst|led:led_driver|counter[3]  ; logic_top:logic_top_inst|led:led_driver|counter[24] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.163      ;
+; -3.117 ; logic_top:logic_top_inst|led:led_driver|counter[7]  ; logic_top:logic_top_inst|led:led_driver|counter[26] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.153      ;
+; -3.105 ; logic_top:logic_top_inst|led:led_driver|counter[24] ; logic_top:logic_top_inst|led:led_driver|counter[15] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 4.143      ;
+; -3.105 ; logic_top:logic_top_inst|led:led_driver|counter[24] ; logic_top:logic_top_inst|led:led_driver|counter[16] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 4.143      ;
+; -3.105 ; logic_top:logic_top_inst|led:led_driver|counter[24] ; logic_top:logic_top_inst|led:led_driver|counter[17] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 4.143      ;
+; -3.105 ; logic_top:logic_top_inst|led:led_driver|counter[24] ; logic_top:logic_top_inst|led:led_driver|counter[18] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 4.143      ;
+; -3.105 ; logic_top:logic_top_inst|led:led_driver|counter[24] ; logic_top:logic_top_inst|led:led_driver|counter[19] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 4.143      ;
+; -3.105 ; logic_top:logic_top_inst|led:led_driver|counter[24] ; logic_top:logic_top_inst|led:led_driver|counter[20] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 4.143      ;
+; -3.105 ; logic_top:logic_top_inst|led:led_driver|counter[24] ; logic_top:logic_top_inst|led:led_driver|counter[21] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 4.143      ;
+; -3.105 ; logic_top:logic_top_inst|led:led_driver|counter[24] ; logic_top:logic_top_inst|led:led_driver|counter[22] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 4.143      ;
+; -3.098 ; logic_top:logic_top_inst|led:led_driver|counter[22] ; logic_top:logic_top_inst|led:led_driver|counter[15] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.134      ;
+; -3.098 ; logic_top:logic_top_inst|led:led_driver|counter[22] ; logic_top:logic_top_inst|led:led_driver|counter[16] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.134      ;
+; -3.098 ; logic_top:logic_top_inst|led:led_driver|counter[22] ; logic_top:logic_top_inst|led:led_driver|counter[17] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.134      ;
+; -3.098 ; logic_top:logic_top_inst|led:led_driver|counter[22] ; logic_top:logic_top_inst|led:led_driver|counter[18] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.134      ;
+; -3.098 ; logic_top:logic_top_inst|led:led_driver|counter[22] ; logic_top:logic_top_inst|led:led_driver|counter[19] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.134      ;
+; -3.098 ; logic_top:logic_top_inst|led:led_driver|counter[22] ; logic_top:logic_top_inst|led:led_driver|counter[20] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.134      ;
+; -3.098 ; logic_top:logic_top_inst|led:led_driver|counter[22] ; logic_top:logic_top_inst|led:led_driver|counter[21] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.134      ;
+; -3.098 ; logic_top:logic_top_inst|led:led_driver|counter[22] ; logic_top:logic_top_inst|led:led_driver|counter[22] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.134      ;
+; -3.095 ; logic_top:logic_top_inst|led:led_driver|counter[4]  ; logic_top:logic_top_inst|led:led_driver|counter[25] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.131      ;
+; -3.065 ; logic_top:logic_top_inst|led:led_driver|counter[17] ; logic_top:logic_top_inst|led:led_driver|counter[12] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.002     ; 4.099      ;
+; -3.065 ; logic_top:logic_top_inst|led:led_driver|counter[17] ; logic_top:logic_top_inst|led:led_driver|counter[14] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.002     ; 4.099      ;
+; -3.065 ; logic_top:logic_top_inst|led:led_driver|counter[17] ; logic_top:logic_top_inst|led:led_driver|counter[23] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.002     ; 4.099      ;
+; -3.065 ; logic_top:logic_top_inst|led:led_driver|counter[17] ; logic_top:logic_top_inst|led:led_driver|counter[24] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.002     ; 4.099      ;
+; -3.065 ; logic_top:logic_top_inst|led:led_driver|counter[17] ; logic_top:logic_top_inst|led:led_driver|counter[25] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.002     ; 4.099      ;
+; -3.065 ; logic_top:logic_top_inst|led:led_driver|counter[17] ; logic_top:logic_top_inst|led:led_driver|counter[26] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.002     ; 4.099      ;
+; -3.065 ; logic_top:logic_top_inst|led:led_driver|counter[17] ; logic_top:logic_top_inst|led:led_driver|counter[13] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.002     ; 4.099      ;
+; -3.056 ; logic_top:logic_top_inst|led:led_driver|counter[17] ; logic_top:logic_top_inst|led:led_driver|counter[0]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.002     ; 4.090      ;
+; -3.056 ; logic_top:logic_top_inst|led:led_driver|counter[17] ; logic_top:logic_top_inst|led:led_driver|counter[1]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.002     ; 4.090      ;
+; -3.056 ; logic_top:logic_top_inst|led:led_driver|counter[17] ; logic_top:logic_top_inst|led:led_driver|counter[2]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.002     ; 4.090      ;
+; -3.056 ; logic_top:logic_top_inst|led:led_driver|counter[17] ; logic_top:logic_top_inst|led:led_driver|counter[3]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.002     ; 4.090      ;
+; -3.056 ; logic_top:logic_top_inst|led:led_driver|counter[17] ; logic_top:logic_top_inst|led:led_driver|counter[4]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.002     ; 4.090      ;
+; -3.056 ; logic_top:logic_top_inst|led:led_driver|counter[17] ; logic_top:logic_top_inst|led:led_driver|counter[5]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.002     ; 4.090      ;
+; -3.056 ; logic_top:logic_top_inst|led:led_driver|counter[17] ; logic_top:logic_top_inst|led:led_driver|counter[6]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.002     ; 4.090      ;
+; -3.056 ; logic_top:logic_top_inst|led:led_driver|counter[17] ; logic_top:logic_top_inst|led:led_driver|counter[7]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.002     ; 4.090      ;
+; -3.056 ; logic_top:logic_top_inst|led:led_driver|counter[17] ; logic_top:logic_top_inst|led:led_driver|counter[8]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.002     ; 4.090      ;
+; -3.056 ; logic_top:logic_top_inst|led:led_driver|counter[17] ; logic_top:logic_top_inst|led:led_driver|counter[9]  ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.002     ; 4.090      ;
+; -3.056 ; logic_top:logic_top_inst|led:led_driver|counter[17] ; logic_top:logic_top_inst|led:led_driver|counter[10] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.002     ; 4.090      ;
+; -3.056 ; logic_top:logic_top_inst|led:led_driver|counter[17] ; logic_top:logic_top_inst|led:led_driver|counter[11] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.002     ; 4.090      ;
+; -3.048 ; logic_top:logic_top_inst|led:led_driver|counter[10] ; logic_top:logic_top_inst|led:led_driver|counter[15] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 4.086      ;
+; -3.048 ; logic_top:logic_top_inst|led:led_driver|counter[10] ; logic_top:logic_top_inst|led:led_driver|counter[16] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 4.086      ;
++--------+-----------------------------------------------------+-----------------------------------------------------+--------------+-------------+--------------+------------+------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Slow Model Hold: 'CLOCK_50'                                                                                                                                                                                                             ;
++-------+-----------------------------------------------------------------------------+-----------------------------------------------------------------------------+--------------+-------------+--------------+------------+------------+
+; Slack ; From Node                                                                   ; To Node                                                                     ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++-------+-----------------------------------------------------------------------------+-----------------------------------------------------------------------------+--------------+-------------+--------------+------------+------------+
+; 0.526 ; logic_top:logic_top_inst|letter_selection_logic:lsl|letter_size[2]          ; logic_top:logic_top_inst|letter_size_register:lsr|letter_size_out[2]        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.792      ;
+; 0.528 ; logic_top:logic_top_inst|letter_size_register:lsr|letter_size_out[0]        ; logic_top:logic_top_inst|letter_symbols_register:lsr2|letter_symbols_out[0] ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.794      ;
+; 0.655 ; logic_top:logic_top_inst|letter_symbols_register:lsr2|letter_symbols_out[1] ; logic_top:logic_top_inst|letter_symbols_register:lsr2|letter_symbols_out[2] ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.921      ;
+; 0.662 ; logic_top:logic_top_inst|letter_selection_logic:lsl|letter_size[0]          ; logic_top:logic_top_inst|letter_size_register:lsr|letter_size_out[0]        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.928      ;
+; 0.662 ; logic_top:logic_top_inst|letter_size_register:lsr|letter_size_out[1]        ; logic_top:logic_top_inst|letter_symbols_register:lsr2|letter_symbols_out[0] ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.928      ;
+; 0.663 ; logic_top:logic_top_inst|letter_selection_logic:lsl|letter_size[1]          ; logic_top:logic_top_inst|letter_size_register:lsr|letter_size_out[1]        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.929      ;
+; 0.710 ; logic_top:logic_top_inst|letter_selection_logic:lsl|letter_symbols[3]       ; logic_top:logic_top_inst|letter_symbols_register:lsr2|letter_symbols_out[3] ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.976      ;
+; 0.760 ; logic_top:logic_top_inst|letter_size_register:lsr|letter_size_out[2]        ; logic_top:logic_top_inst|letter_symbols_register:lsr2|letter_symbols_out[0] ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.026      ;
+; 0.793 ; logic_top:logic_top_inst|letter_selection_logic:lsl|letter_symbols[2]       ; logic_top:logic_top_inst|letter_symbols_register:lsr2|letter_symbols_out[2] ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.059      ;
+; 0.795 ; logic_top:logic_top_inst|led:led_driver|counter[1]                          ; logic_top:logic_top_inst|led:led_driver|counter[1]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.061      ;
+; 0.795 ; logic_top:logic_top_inst|led:led_driver|counter[4]                          ; logic_top:logic_top_inst|led:led_driver|counter[4]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.061      ;
+; 0.798 ; logic_top:logic_top_inst|led:led_driver|counter[22]                         ; logic_top:logic_top_inst|led:led_driver|counter[22]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.064      ;
+; 0.800 ; logic_top:logic_top_inst|letter_selection_logic:lsl|letter_symbols[1]       ; logic_top:logic_top_inst|letter_symbols_register:lsr2|letter_symbols_out[1] ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.066      ;
+; 0.802 ; logic_top:logic_top_inst|led:led_driver|counter[8]                          ; logic_top:logic_top_inst|led:led_driver|counter[8]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.068      ;
+; 0.802 ; logic_top:logic_top_inst|led:led_driver|counter[10]                         ; logic_top:logic_top_inst|led:led_driver|counter[10]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.068      ;
+; 0.806 ; logic_top:logic_top_inst|led:led_driver|counter[6]                          ; logic_top:logic_top_inst|led:led_driver|counter[6]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.072      ;
+; 0.806 ; logic_top:logic_top_inst|led:led_driver|counter[11]                         ; logic_top:logic_top_inst|led:led_driver|counter[11]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.072      ;
+; 0.815 ; logic_top:logic_top_inst|led:led_driver|counter[20]                         ; logic_top:logic_top_inst|led:led_driver|counter[20]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.081      ;
+; 0.820 ; logic_top:logic_top_inst|led:led_driver|counter[15]                         ; logic_top:logic_top_inst|led:led_driver|counter[15]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.086      ;
+; 0.821 ; logic_top:logic_top_inst|led:led_driver|counter[17]                         ; logic_top:logic_top_inst|led:led_driver|counter[17]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.087      ;
+; 0.830 ; logic_top:logic_top_inst|led:led_driver|counter[21]                         ; logic_top:logic_top_inst|led:led_driver|counter[21]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.096      ;
+; 0.831 ; logic_top:logic_top_inst|led:led_driver|counter[0]                          ; logic_top:logic_top_inst|led:led_driver|counter[0]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.097      ;
+; 0.832 ; logic_top:logic_top_inst|led:led_driver|counter[2]                          ; logic_top:logic_top_inst|led:led_driver|counter[2]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.098      ;
+; 0.832 ; logic_top:logic_top_inst|led:led_driver|counter[3]                          ; logic_top:logic_top_inst|led:led_driver|counter[3]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.098      ;
+; 0.834 ; logic_top:logic_top_inst|led:led_driver|counter[5]                          ; logic_top:logic_top_inst|led:led_driver|counter[5]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.100      ;
+; 0.838 ; logic_top:logic_top_inst|led:led_driver|counter[9]                          ; logic_top:logic_top_inst|led:led_driver|counter[9]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.104      ;
+; 0.839 ; logic_top:logic_top_inst|letter_symbols_register:lsr2|letter_symbols_out[0] ; logic_top:logic_top_inst|letter_symbols_register:lsr2|letter_symbols_out[1] ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.105      ;
+; 0.840 ; logic_top:logic_top_inst|letter_selection_logic:lsl|letter_symbols[0]       ; logic_top:logic_top_inst|letter_symbols_register:lsr2|letter_symbols_out[0] ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.106      ;
+; 0.842 ; logic_top:logic_top_inst|led:led_driver|counter[7]                          ; logic_top:logic_top_inst|led:led_driver|counter[7]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.108      ;
+; 0.846 ; logic_top:logic_top_inst|led:led_driver|counter[19]                         ; logic_top:logic_top_inst|led:led_driver|counter[19]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.112      ;
+; 0.852 ; logic_top:logic_top_inst|led:led_driver|counter[16]                         ; logic_top:logic_top_inst|led:led_driver|counter[16]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.118      ;
+; 0.853 ; logic_top:logic_top_inst|led:led_driver|counter[18]                         ; logic_top:logic_top_inst|led:led_driver|counter[18]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.119      ;
+; 0.948 ; logic_top:logic_top_inst|letter_size_register:lsr|letter_size_out[0]        ; logic_top:logic_top_inst|letter_symbols_register:lsr2|letter_symbols_out[1] ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.214      ;
+; 0.951 ; logic_top:logic_top_inst|letter_size_register:lsr|letter_size_out[0]        ; logic_top:logic_top_inst|letter_symbols_register:lsr2|letter_symbols_out[2] ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.217      ;
+; 1.082 ; logic_top:logic_top_inst|letter_size_register:lsr|letter_size_out[1]        ; logic_top:logic_top_inst|letter_symbols_register:lsr2|letter_symbols_out[1] ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.348      ;
+; 1.085 ; logic_top:logic_top_inst|letter_size_register:lsr|letter_size_out[1]        ; logic_top:logic_top_inst|letter_symbols_register:lsr2|letter_symbols_out[2] ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.351      ;
+; 1.177 ; logic_top:logic_top_inst|letter_size_register:lsr|letter_size_out[2]        ; logic_top:logic_top_inst|letter_symbols_register:lsr2|letter_symbols_out[1] ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.443      ;
+; 1.178 ; logic_top:logic_top_inst|led:led_driver|counter[1]                          ; logic_top:logic_top_inst|led:led_driver|counter[2]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.444      ;
+; 1.180 ; logic_top:logic_top_inst|letter_size_register:lsr|letter_size_out[2]        ; logic_top:logic_top_inst|letter_symbols_register:lsr2|letter_symbols_out[2] ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.446      ;
+; 1.185 ; logic_top:logic_top_inst|led:led_driver|counter[10]                         ; logic_top:logic_top_inst|led:led_driver|counter[11]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.451      ;
+; 1.185 ; logic_top:logic_top_inst|led:led_driver|counter[8]                          ; logic_top:logic_top_inst|led:led_driver|counter[9]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.451      ;
+; 1.189 ; logic_top:logic_top_inst|led:led_driver|counter[6]                          ; logic_top:logic_top_inst|led:led_driver|counter[7]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.455      ;
+; 1.203 ; logic_top:logic_top_inst|led:led_driver|counter[15]                         ; logic_top:logic_top_inst|led:led_driver|counter[16]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.469      ;
+; 1.204 ; logic_top:logic_top_inst|led:led_driver|counter[17]                         ; logic_top:logic_top_inst|led:led_driver|counter[18]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.470      ;
+; 1.205 ; logic_top:logic_top_inst|letter_symbols_register:lsr2|letter_symbols_out[2] ; logic_top:logic_top_inst|letter_symbols_register:lsr2|letter_symbols_out[3] ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.471      ;
+; 1.216 ; logic_top:logic_top_inst|led:led_driver|counter[21]                         ; logic_top:logic_top_inst|led:led_driver|counter[22]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.482      ;
+; 1.217 ; logic_top:logic_top_inst|led:led_driver|counter[0]                          ; logic_top:logic_top_inst|led:led_driver|counter[1]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.483      ;
+; 1.218 ; logic_top:logic_top_inst|led:led_driver|counter[3]                          ; logic_top:logic_top_inst|led:led_driver|counter[4]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.484      ;
+; 1.218 ; logic_top:logic_top_inst|led:led_driver|counter[2]                          ; logic_top:logic_top_inst|led:led_driver|counter[3]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.484      ;
+; 1.220 ; logic_top:logic_top_inst|led:led_driver|counter[5]                          ; logic_top:logic_top_inst|led:led_driver|counter[6]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.486      ;
+; 1.224 ; logic_top:logic_top_inst|led:led_driver|counter[9]                          ; logic_top:logic_top_inst|led:led_driver|counter[10]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.490      ;
+; 1.228 ; logic_top:logic_top_inst|led:led_driver|counter[7]                          ; logic_top:logic_top_inst|led:led_driver|counter[8]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.494      ;
+; 1.232 ; logic_top:logic_top_inst|led:led_driver|counter[19]                         ; logic_top:logic_top_inst|led:led_driver|counter[20]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.498      ;
+; 1.238 ; logic_top:logic_top_inst|led:led_driver|counter[16]                         ; logic_top:logic_top_inst|led:led_driver|counter[17]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.504      ;
+; 1.239 ; logic_top:logic_top_inst|led:led_driver|counter[18]                         ; logic_top:logic_top_inst|led:led_driver|counter[19]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.505      ;
+; 1.249 ; logic_top:logic_top_inst|led:led_driver|counter[1]                          ; logic_top:logic_top_inst|led:led_driver|counter[3]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.515      ;
+; 1.256 ; logic_top:logic_top_inst|led:led_driver|counter[8]                          ; logic_top:logic_top_inst|led:led_driver|counter[10]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.522      ;
+; 1.260 ; logic_top:logic_top_inst|led:led_driver|counter[6]                          ; logic_top:logic_top_inst|led:led_driver|counter[8]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.526      ;
+; 1.270 ; logic_top:logic_top_inst|led:led_driver|counter[4]                          ; logic_top:logic_top_inst|led:led_driver|counter[5]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.536      ;
+; 1.274 ; logic_top:logic_top_inst|led:led_driver|counter[15]                         ; logic_top:logic_top_inst|led:led_driver|counter[17]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.540      ;
+; 1.275 ; logic_top:logic_top_inst|led:led_driver|counter[17]                         ; logic_top:logic_top_inst|led:led_driver|counter[19]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.541      ;
+; 1.288 ; logic_top:logic_top_inst|led:led_driver|counter[0]                          ; logic_top:logic_top_inst|led:led_driver|counter[2]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.554      ;
+; 1.289 ; logic_top:logic_top_inst|led:led_driver|counter[2]                          ; logic_top:logic_top_inst|led:led_driver|counter[4]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.555      ;
+; 1.290 ; logic_top:logic_top_inst|led:led_driver|counter[20]                         ; logic_top:logic_top_inst|led:led_driver|counter[21]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.556      ;
+; 1.291 ; logic_top:logic_top_inst|led:led_driver|counter[5]                          ; logic_top:logic_top_inst|led:led_driver|counter[7]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.557      ;
+; 1.295 ; logic_top:logic_top_inst|led:led_driver|counter[9]                          ; logic_top:logic_top_inst|led:led_driver|counter[11]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.561      ;
+; 1.296 ; logic_top:logic_top_inst|led:led_driver|counter[25]                         ; logic_top:logic_top_inst|led:led_driver|led_out                             ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.562      ;
+; 1.299 ; logic_top:logic_top_inst|led:led_driver|counter[7]                          ; logic_top:logic_top_inst|led:led_driver|counter[9]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.565      ;
+; 1.309 ; logic_top:logic_top_inst|led:led_driver|counter[16]                         ; logic_top:logic_top_inst|led:led_driver|counter[18]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.575      ;
+; 1.310 ; logic_top:logic_top_inst|led:led_driver|counter[18]                         ; logic_top:logic_top_inst|led:led_driver|counter[20]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.576      ;
+; 1.320 ; logic_top:logic_top_inst|led:led_driver|counter[1]                          ; logic_top:logic_top_inst|led:led_driver|counter[4]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.586      ;
+; 1.327 ; logic_top:logic_top_inst|led:led_driver|counter[8]                          ; logic_top:logic_top_inst|led:led_driver|counter[11]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.593      ;
+; 1.331 ; logic_top:logic_top_inst|led:led_driver|counter[6]                          ; logic_top:logic_top_inst|led:led_driver|counter[9]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.597      ;
+; 1.341 ; logic_top:logic_top_inst|led:led_driver|counter[4]                          ; logic_top:logic_top_inst|led:led_driver|counter[6]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.607      ;
+; 1.345 ; logic_top:logic_top_inst|led:led_driver|counter[15]                         ; logic_top:logic_top_inst|led:led_driver|counter[18]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.611      ;
+; 1.346 ; logic_top:logic_top_inst|led:led_driver|counter[17]                         ; logic_top:logic_top_inst|led:led_driver|counter[20]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.612      ;
+; 1.358 ; logic_top:logic_top_inst|letter_size_register:lsr|letter_size_out[0]        ; logic_top:logic_top_inst|letter_size_register:lsr|letter_size_out[0]        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.624      ;
+; 1.358 ; logic_top:logic_top_inst|letter_size_register:lsr|letter_size_out[0]        ; logic_top:logic_top_inst|letter_size_register:lsr|letter_size_out[1]        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.624      ;
+; 1.358 ; logic_top:logic_top_inst|letter_size_register:lsr|letter_size_out[0]        ; logic_top:logic_top_inst|letter_size_register:lsr|letter_size_out[2]        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.624      ;
+; 1.359 ; logic_top:logic_top_inst|led:led_driver|counter[0]                          ; logic_top:logic_top_inst|led:led_driver|counter[3]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.625      ;
+; 1.361 ; logic_top:logic_top_inst|led:led_driver|counter[20]                         ; logic_top:logic_top_inst|led:led_driver|counter[22]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.627      ;
+; 1.362 ; logic_top:logic_top_inst|led:led_driver|counter[5]                          ; logic_top:logic_top_inst|led:led_driver|counter[8]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.628      ;
+; 1.370 ; logic_top:logic_top_inst|led:led_driver|counter[7]                          ; logic_top:logic_top_inst|led:led_driver|counter[10]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.636      ;
+; 1.377 ; logic_top:logic_top_inst|led:led_driver|counter[3]                          ; logic_top:logic_top_inst|led:led_driver|counter[5]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.643      ;
+; 1.380 ; logic_top:logic_top_inst|led:led_driver|counter[16]                         ; logic_top:logic_top_inst|led:led_driver|counter[19]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.646      ;
+; 1.391 ; logic_top:logic_top_inst|led:led_driver|counter[19]                         ; logic_top:logic_top_inst|led:led_driver|counter[21]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.657      ;
+; 1.394 ; logic_top:logic_top_inst|letter_size_register:lsr|letter_size_out[0]        ; logic_top:logic_top_inst|letter_symbols_register:lsr2|letter_symbols_out[3] ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.660      ;
+; 1.402 ; logic_top:logic_top_inst|led:led_driver|counter[6]                          ; logic_top:logic_top_inst|led:led_driver|counter[10]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.668      ;
+; 1.412 ; logic_top:logic_top_inst|led:led_driver|counter[4]                          ; logic_top:logic_top_inst|led:led_driver|counter[7]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.678      ;
+; 1.416 ; logic_top:logic_top_inst|led:led_driver|counter[15]                         ; logic_top:logic_top_inst|led:led_driver|counter[19]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.682      ;
+; 1.430 ; logic_top:logic_top_inst|led:led_driver|counter[0]                          ; logic_top:logic_top_inst|led:led_driver|counter[4]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.696      ;
+; 1.433 ; logic_top:logic_top_inst|led:led_driver|counter[5]                          ; logic_top:logic_top_inst|led:led_driver|counter[9]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.699      ;
+; 1.441 ; logic_top:logic_top_inst|led:led_driver|counter[7]                          ; logic_top:logic_top_inst|led:led_driver|counter[11]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.707      ;
+; 1.445 ; logic_top:logic_top_inst|led:led_driver|counter[23]                         ; logic_top:logic_top_inst|led:led_driver|led_out                             ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.711      ;
+; 1.448 ; logic_top:logic_top_inst|led:led_driver|counter[3]                          ; logic_top:logic_top_inst|led:led_driver|counter[6]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.714      ;
+; 1.448 ; logic_top:logic_top_inst|led:led_driver|counter[2]                          ; logic_top:logic_top_inst|led:led_driver|counter[5]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.714      ;
+; 1.451 ; logic_top:logic_top_inst|led:led_driver|counter[16]                         ; logic_top:logic_top_inst|led:led_driver|counter[20]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.717      ;
+; 1.462 ; logic_top:logic_top_inst|led:led_driver|counter[19]                         ; logic_top:logic_top_inst|led:led_driver|counter[22]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.728      ;
+; 1.469 ; logic_top:logic_top_inst|led:led_driver|counter[18]                         ; logic_top:logic_top_inst|led:led_driver|counter[21]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.735      ;
+; 1.473 ; logic_top:logic_top_inst|led:led_driver|counter[6]                          ; logic_top:logic_top_inst|led:led_driver|counter[11]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.739      ;
++-------+-----------------------------------------------------------------------------+-----------------------------------------------------------------------------+--------------+-------------+--------------+------------+------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Slow Model Minimum Pulse Width: 'CLOCK_50'                                                                                                                      ;
++--------+--------------+----------------+------------------+----------+------------+-----------------------------------------------------------------------------+
+; Slack  ; Actual Width ; Required Width ; Type             ; Clock    ; Clock Edge ; Target                                                                      ;
++--------+--------------+----------------+------------------+----------+------------+-----------------------------------------------------------------------------+
+; -1.380 ; 1.000        ; 2.380          ; Port Rate        ; CLOCK_50 ; Rise       ; CLOCK_50                                                                    ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[0]                          ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[0]                          ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[10]                         ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[10]                         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[11]                         ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[11]                         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[12]                         ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[12]                         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[13]                         ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[13]                         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[14]                         ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[14]                         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[15]                         ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[15]                         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[16]                         ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[16]                         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[17]                         ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[17]                         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[18]                         ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[18]                         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[19]                         ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[19]                         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[1]                          ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[1]                          ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[20]                         ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[20]                         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[21]                         ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[21]                         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[22]                         ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[22]                         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[23]                         ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[23]                         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[24]                         ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[24]                         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[25]                         ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[25]                         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[26]                         ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[26]                         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[2]                          ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[2]                          ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[3]                          ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[3]                          ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[4]                          ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[4]                          ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[5]                          ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[5]                          ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[6]                          ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[6]                          ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[7]                          ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[7]                          ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[8]                          ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[8]                          ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[9]                          ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[9]                          ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|led_out                             ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|led_out                             ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|letter_selection_logic:lsl|letter_size[0]          ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|letter_selection_logic:lsl|letter_size[0]          ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|letter_selection_logic:lsl|letter_size[1]          ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|letter_selection_logic:lsl|letter_size[1]          ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|letter_selection_logic:lsl|letter_size[2]          ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|letter_selection_logic:lsl|letter_size[2]          ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|letter_selection_logic:lsl|letter_symbols[0]       ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|letter_selection_logic:lsl|letter_symbols[0]       ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|letter_selection_logic:lsl|letter_symbols[1]       ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|letter_selection_logic:lsl|letter_symbols[1]       ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|letter_selection_logic:lsl|letter_symbols[2]       ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|letter_selection_logic:lsl|letter_symbols[2]       ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|letter_selection_logic:lsl|letter_symbols[3]       ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|letter_selection_logic:lsl|letter_symbols[3]       ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|letter_size_register:lsr|letter_size_out[0]        ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|letter_size_register:lsr|letter_size_out[0]        ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|letter_size_register:lsr|letter_size_out[1]        ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|letter_size_register:lsr|letter_size_out[1]        ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|letter_size_register:lsr|letter_size_out[2]        ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|letter_size_register:lsr|letter_size_out[2]        ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|letter_symbols_register:lsr2|letter_symbols_out[0] ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|letter_symbols_register:lsr2|letter_symbols_out[0] ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|letter_symbols_register:lsr2|letter_symbols_out[1] ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|letter_symbols_register:lsr2|letter_symbols_out[1] ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|letter_symbols_register:lsr2|letter_symbols_out[2] ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|letter_symbols_register:lsr2|letter_symbols_out[2] ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|letter_symbols_register:lsr2|letter_symbols_out[3] ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|letter_symbols_register:lsr2|letter_symbols_out[3] ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; CLOCK_50|combout                                                            ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; CLOCK_50|combout                                                            ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; CLOCK_50~clkctrl|inclk[0]                                                   ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; CLOCK_50~clkctrl|inclk[0]                                                   ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; CLOCK_50~clkctrl|outclk                                                     ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; CLOCK_50~clkctrl|outclk                                                     ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top_inst|led_driver|counter[0]|clk                                    ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top_inst|led_driver|counter[0]|clk                                    ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top_inst|led_driver|counter[10]|clk                                   ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top_inst|led_driver|counter[10]|clk                                   ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top_inst|led_driver|counter[11]|clk                                   ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top_inst|led_driver|counter[11]|clk                                   ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top_inst|led_driver|counter[12]|clk                                   ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top_inst|led_driver|counter[12]|clk                                   ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top_inst|led_driver|counter[13]|clk                                   ;
++--------+--------------+----------------+------------------+----------+------------+-----------------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------+
+; Setup Times                                                             ;
++-----------+------------+--------+--------+------------+-----------------+
+; Data Port ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
++-----------+------------+--------+--------+------------+-----------------+
+; SW[*]     ; CLOCK_50   ; -0.481 ; -0.481 ; Rise       ; CLOCK_50        ;
+;  SW[0]    ; CLOCK_50   ; -0.481 ; -0.481 ; Rise       ; CLOCK_50        ;
+;  SW[1]    ; CLOCK_50   ; -0.660 ; -0.660 ; Rise       ; CLOCK_50        ;
+;  SW[2]    ; CLOCK_50   ; -0.794 ; -0.794 ; Rise       ; CLOCK_50        ;
++-----------+------------+--------+--------+------------+-----------------+
+
+
++-----------------------------------------------------------------------+
+; Hold Times                                                            ;
++-----------+------------+-------+-------+------------+-----------------+
+; Data Port ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++-----------+------------+-------+-------+------------+-----------------+
+; SW[*]     ; CLOCK_50   ; 1.032 ; 1.032 ; Rise       ; CLOCK_50        ;
+;  SW[0]    ; CLOCK_50   ; 0.758 ; 0.758 ; Rise       ; CLOCK_50        ;
+;  SW[1]    ; CLOCK_50   ; 0.896 ; 0.896 ; Rise       ; CLOCK_50        ;
+;  SW[2]    ; CLOCK_50   ; 1.032 ; 1.032 ; Rise       ; CLOCK_50        ;
++-----------+------------+-------+-------+------------+-----------------+
+
+
++-----------------------------------------------------------------------+
+; Clock to Output Times                                                 ;
++-----------+------------+-------+-------+------------+-----------------+
+; Data Port ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++-----------+------------+-------+-------+------------+-----------------+
+; LEDR[*]   ; CLOCK_50   ; 8.154 ; 8.154 ; Rise       ; CLOCK_50        ;
+;  LEDR[16] ; CLOCK_50   ; 8.154 ; 8.154 ; Rise       ; CLOCK_50        ;
++-----------+------------+-------+-------+------------+-----------------+
+
+
++-----------------------------------------------------------------------+
+; Minimum Clock to Output Times                                         ;
++-----------+------------+-------+-------+------------+-----------------+
+; Data Port ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++-----------+------------+-------+-------+------------+-----------------+
+; LEDR[*]   ; CLOCK_50   ; 8.154 ; 8.154 ; Rise       ; CLOCK_50        ;
+;  LEDR[16] ; CLOCK_50   ; 8.154 ; 8.154 ; Rise       ; CLOCK_50        ;
++-----------+------------+-------+-------+------------+-----------------+
+
+
++----------------------------------------------------+
+; Propagation Delay                                  ;
++------------+-------------+-------+----+----+-------+
+; Input Port ; Output Port ; RR    ; RF ; FR ; FF    ;
++------------+-------------+-------+----+----+-------+
+; KEY[0]     ; LEDG[0]     ; 9.958 ;    ;    ; 9.958 ;
+; KEY[1]     ; LEDG[1]     ; 9.216 ;    ;    ; 9.216 ;
++------------+-------------+-------+----+----+-------+
+
+
++----------------------------------------------------+
+; Minimum Propagation Delay                          ;
++------------+-------------+-------+----+----+-------+
+; Input Port ; Output Port ; RR    ; RF ; FR ; FF    ;
++------------+-------------+-------+----+----+-------+
+; KEY[0]     ; LEDG[0]     ; 9.958 ;    ;    ; 9.958 ;
+; KEY[1]     ; LEDG[1]     ; 9.216 ;    ;    ; 9.216 ;
++------------+-------------+-------+----+----+-------+
+
+
++-----------------------------------+
+; Fast Model Setup Summary          ;
++----------+--------+---------------+
+; Clock    ; Slack  ; End Point TNS ;
++----------+--------+---------------+
+; CLOCK_50 ; -1.225 ; -25.901       ;
++----------+--------+---------------+
+
+
++----------------------------------+
+; Fast Model Hold Summary          ;
++----------+-------+---------------+
+; Clock    ; Slack ; End Point TNS ;
++----------+-------+---------------+
+; CLOCK_50 ; 0.244 ; 0.000         ;
++----------+-------+---------------+
+
+
+-------------------------------
+; Fast Model Recovery Summary ;
+-------------------------------
+No paths to report.
+
+
+------------------------------
+; Fast Model Removal Summary ;
+------------------------------
+No paths to report.
+
+
++----------------------------------------+
+; Fast Model Minimum Pulse Width Summary ;
++----------+--------+--------------------+
+; Clock    ; Slack  ; End Point TNS      ;
++----------+--------+--------------------+
+; CLOCK_50 ; -1.380 ; -43.380            ;
++----------+--------+--------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Fast Model Setup: 'CLOCK_50'                                                                                                                                                             ;
++--------+-----------------------------------------------------+-----------------------------------------------------+--------------+-------------+--------------+------------+------------+
+; Slack  ; From Node                                           ; To Node                                             ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++--------+-----------------------------------------------------+-----------------------------------------------------+--------------+-------------+--------------+------------+------------+
+; -1.225 ; logic_top:logic_top_inst|led:led_driver|counter[0]  ; logic_top:logic_top_inst|led:led_driver|counter[26] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 2.257      ;
+; -1.175 ; logic_top:logic_top_inst|led:led_driver|counter[1]  ; logic_top:logic_top_inst|led:led_driver|counter[26] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 2.207      ;
+; -1.156 ; logic_top:logic_top_inst|led:led_driver|counter[2]  ; logic_top:logic_top_inst|led:led_driver|counter[26] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 2.188      ;
+; -1.121 ; logic_top:logic_top_inst|led:led_driver|counter[3]  ; logic_top:logic_top_inst|led:led_driver|counter[26] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 2.153      ;
+; -1.120 ; logic_top:logic_top_inst|led:led_driver|counter[0]  ; logic_top:logic_top_inst|led:led_driver|counter[23] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 2.152      ;
+; -1.104 ; logic_top:logic_top_inst|led:led_driver|counter[0]  ; logic_top:logic_top_inst|led:led_driver|counter[25] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 2.136      ;
+; -1.070 ; logic_top:logic_top_inst|led:led_driver|counter[1]  ; logic_top:logic_top_inst|led:led_driver|counter[23] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 2.102      ;
+; -1.066 ; logic_top:logic_top_inst|led:led_driver|counter[4]  ; logic_top:logic_top_inst|led:led_driver|counter[26] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 2.098      ;
+; -1.063 ; logic_top:logic_top_inst|led:led_driver|counter[0]  ; logic_top:logic_top_inst|led:led_driver|counter[24] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 2.095      ;
+; -1.054 ; logic_top:logic_top_inst|led:led_driver|counter[1]  ; logic_top:logic_top_inst|led:led_driver|counter[25] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 2.086      ;
+; -1.051 ; logic_top:logic_top_inst|led:led_driver|counter[2]  ; logic_top:logic_top_inst|led:led_driver|counter[23] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 2.083      ;
+; -1.035 ; logic_top:logic_top_inst|led:led_driver|counter[2]  ; logic_top:logic_top_inst|led:led_driver|counter[25] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 2.067      ;
+; -1.016 ; logic_top:logic_top_inst|led:led_driver|counter[3]  ; logic_top:logic_top_inst|led:led_driver|counter[23] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 2.048      ;
+; -1.013 ; logic_top:logic_top_inst|led:led_driver|counter[1]  ; logic_top:logic_top_inst|led:led_driver|counter[24] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 2.045      ;
+; -1.000 ; logic_top:logic_top_inst|led:led_driver|counter[3]  ; logic_top:logic_top_inst|led:led_driver|counter[25] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 2.032      ;
+; -0.999 ; logic_top:logic_top_inst|led:led_driver|counter[8]  ; logic_top:logic_top_inst|led:led_driver|counter[15] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 2.032      ;
+; -0.999 ; logic_top:logic_top_inst|led:led_driver|counter[8]  ; logic_top:logic_top_inst|led:led_driver|counter[16] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 2.032      ;
+; -0.999 ; logic_top:logic_top_inst|led:led_driver|counter[8]  ; logic_top:logic_top_inst|led:led_driver|counter[17] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 2.032      ;
+; -0.999 ; logic_top:logic_top_inst|led:led_driver|counter[8]  ; logic_top:logic_top_inst|led:led_driver|counter[18] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 2.032      ;
+; -0.999 ; logic_top:logic_top_inst|led:led_driver|counter[8]  ; logic_top:logic_top_inst|led:led_driver|counter[19] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 2.032      ;
+; -0.999 ; logic_top:logic_top_inst|led:led_driver|counter[8]  ; logic_top:logic_top_inst|led:led_driver|counter[20] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 2.032      ;
+; -0.999 ; logic_top:logic_top_inst|led:led_driver|counter[8]  ; logic_top:logic_top_inst|led:led_driver|counter[21] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 2.032      ;
+; -0.999 ; logic_top:logic_top_inst|led:led_driver|counter[8]  ; logic_top:logic_top_inst|led:led_driver|counter[22] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 2.032      ;
+; -0.994 ; logic_top:logic_top_inst|led:led_driver|counter[2]  ; logic_top:logic_top_inst|led:led_driver|counter[24] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 2.026      ;
+; -0.993 ; logic_top:logic_top_inst|led:led_driver|counter[5]  ; logic_top:logic_top_inst|led:led_driver|counter[26] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 2.025      ;
+; -0.987 ; logic_top:logic_top_inst|led:led_driver|counter[17] ; logic_top:logic_top_inst|led:led_driver|counter[15] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 2.019      ;
+; -0.987 ; logic_top:logic_top_inst|led:led_driver|counter[17] ; logic_top:logic_top_inst|led:led_driver|counter[16] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 2.019      ;
+; -0.987 ; logic_top:logic_top_inst|led:led_driver|counter[17] ; logic_top:logic_top_inst|led:led_driver|counter[17] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 2.019      ;
+; -0.987 ; logic_top:logic_top_inst|led:led_driver|counter[17] ; logic_top:logic_top_inst|led:led_driver|counter[18] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 2.019      ;
+; -0.987 ; logic_top:logic_top_inst|led:led_driver|counter[17] ; logic_top:logic_top_inst|led:led_driver|counter[19] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 2.019      ;
+; -0.987 ; logic_top:logic_top_inst|led:led_driver|counter[17] ; logic_top:logic_top_inst|led:led_driver|counter[20] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 2.019      ;
+; -0.987 ; logic_top:logic_top_inst|led:led_driver|counter[17] ; logic_top:logic_top_inst|led:led_driver|counter[21] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 2.019      ;
+; -0.987 ; logic_top:logic_top_inst|led:led_driver|counter[17] ; logic_top:logic_top_inst|led:led_driver|counter[22] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 2.019      ;
+; -0.961 ; logic_top:logic_top_inst|led:led_driver|counter[4]  ; logic_top:logic_top_inst|led:led_driver|counter[23] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.993      ;
+; -0.959 ; logic_top:logic_top_inst|led:led_driver|counter[3]  ; logic_top:logic_top_inst|led:led_driver|counter[24] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.991      ;
+; -0.945 ; logic_top:logic_top_inst|led:led_driver|counter[6]  ; logic_top:logic_top_inst|led:led_driver|counter[26] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.977      ;
+; -0.945 ; logic_top:logic_top_inst|led:led_driver|counter[4]  ; logic_top:logic_top_inst|led:led_driver|counter[25] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.977      ;
+; -0.934 ; logic_top:logic_top_inst|led:led_driver|counter[16] ; logic_top:logic_top_inst|led:led_driver|counter[15] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.966      ;
+; -0.934 ; logic_top:logic_top_inst|led:led_driver|counter[16] ; logic_top:logic_top_inst|led:led_driver|counter[16] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.966      ;
+; -0.934 ; logic_top:logic_top_inst|led:led_driver|counter[16] ; logic_top:logic_top_inst|led:led_driver|counter[17] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.966      ;
+; -0.934 ; logic_top:logic_top_inst|led:led_driver|counter[16] ; logic_top:logic_top_inst|led:led_driver|counter[18] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.966      ;
+; -0.934 ; logic_top:logic_top_inst|led:led_driver|counter[16] ; logic_top:logic_top_inst|led:led_driver|counter[19] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.966      ;
+; -0.934 ; logic_top:logic_top_inst|led:led_driver|counter[16] ; logic_top:logic_top_inst|led:led_driver|counter[20] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.966      ;
+; -0.934 ; logic_top:logic_top_inst|led:led_driver|counter[16] ; logic_top:logic_top_inst|led:led_driver|counter[21] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.966      ;
+; -0.934 ; logic_top:logic_top_inst|led:led_driver|counter[16] ; logic_top:logic_top_inst|led:led_driver|counter[22] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.966      ;
+; -0.932 ; logic_top:logic_top_inst|led:led_driver|counter[9]  ; logic_top:logic_top_inst|led:led_driver|counter[15] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 1.965      ;
+; -0.932 ; logic_top:logic_top_inst|led:led_driver|counter[9]  ; logic_top:logic_top_inst|led:led_driver|counter[16] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 1.965      ;
+; -0.932 ; logic_top:logic_top_inst|led:led_driver|counter[9]  ; logic_top:logic_top_inst|led:led_driver|counter[17] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 1.965      ;
+; -0.932 ; logic_top:logic_top_inst|led:led_driver|counter[9]  ; logic_top:logic_top_inst|led:led_driver|counter[18] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 1.965      ;
+; -0.932 ; logic_top:logic_top_inst|led:led_driver|counter[9]  ; logic_top:logic_top_inst|led:led_driver|counter[19] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 1.965      ;
+; -0.932 ; logic_top:logic_top_inst|led:led_driver|counter[9]  ; logic_top:logic_top_inst|led:led_driver|counter[20] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 1.965      ;
+; -0.932 ; logic_top:logic_top_inst|led:led_driver|counter[9]  ; logic_top:logic_top_inst|led:led_driver|counter[21] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 1.965      ;
+; -0.932 ; logic_top:logic_top_inst|led:led_driver|counter[9]  ; logic_top:logic_top_inst|led:led_driver|counter[22] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 1.965      ;
+; -0.926 ; logic_top:logic_top_inst|led:led_driver|counter[7]  ; logic_top:logic_top_inst|led:led_driver|counter[26] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.958      ;
+; -0.925 ; logic_top:logic_top_inst|led:led_driver|counter[14] ; logic_top:logic_top_inst|led:led_driver|counter[26] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.957      ;
+; -0.915 ; logic_top:logic_top_inst|led:led_driver|counter[21] ; logic_top:logic_top_inst|led:led_driver|counter[15] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.947      ;
+; -0.915 ; logic_top:logic_top_inst|led:led_driver|counter[21] ; logic_top:logic_top_inst|led:led_driver|counter[16] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.947      ;
+; -0.915 ; logic_top:logic_top_inst|led:led_driver|counter[21] ; logic_top:logic_top_inst|led:led_driver|counter[17] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.947      ;
+; -0.915 ; logic_top:logic_top_inst|led:led_driver|counter[21] ; logic_top:logic_top_inst|led:led_driver|counter[18] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.947      ;
+; -0.915 ; logic_top:logic_top_inst|led:led_driver|counter[21] ; logic_top:logic_top_inst|led:led_driver|counter[19] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.947      ;
+; -0.915 ; logic_top:logic_top_inst|led:led_driver|counter[21] ; logic_top:logic_top_inst|led:led_driver|counter[20] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.947      ;
+; -0.915 ; logic_top:logic_top_inst|led:led_driver|counter[21] ; logic_top:logic_top_inst|led:led_driver|counter[21] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.947      ;
+; -0.915 ; logic_top:logic_top_inst|led:led_driver|counter[21] ; logic_top:logic_top_inst|led:led_driver|counter[22] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.947      ;
+; -0.904 ; logic_top:logic_top_inst|led:led_driver|counter[4]  ; logic_top:logic_top_inst|led:led_driver|counter[24] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.936      ;
+; -0.901 ; logic_top:logic_top_inst|led:led_driver|counter[22] ; logic_top:logic_top_inst|led:led_driver|counter[15] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.933      ;
+; -0.901 ; logic_top:logic_top_inst|led:led_driver|counter[22] ; logic_top:logic_top_inst|led:led_driver|counter[16] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.933      ;
+; -0.901 ; logic_top:logic_top_inst|led:led_driver|counter[22] ; logic_top:logic_top_inst|led:led_driver|counter[17] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.933      ;
+; -0.901 ; logic_top:logic_top_inst|led:led_driver|counter[22] ; logic_top:logic_top_inst|led:led_driver|counter[18] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.933      ;
+; -0.901 ; logic_top:logic_top_inst|led:led_driver|counter[22] ; logic_top:logic_top_inst|led:led_driver|counter[19] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.933      ;
+; -0.901 ; logic_top:logic_top_inst|led:led_driver|counter[22] ; logic_top:logic_top_inst|led:led_driver|counter[20] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.933      ;
+; -0.901 ; logic_top:logic_top_inst|led:led_driver|counter[22] ; logic_top:logic_top_inst|led:led_driver|counter[21] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.933      ;
+; -0.901 ; logic_top:logic_top_inst|led:led_driver|counter[22] ; logic_top:logic_top_inst|led:led_driver|counter[22] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.933      ;
+; -0.888 ; logic_top:logic_top_inst|led:led_driver|counter[5]  ; logic_top:logic_top_inst|led:led_driver|counter[23] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.920      ;
+; -0.886 ; logic_top:logic_top_inst|led:led_driver|counter[24] ; logic_top:logic_top_inst|led:led_driver|counter[15] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 1.919      ;
+; -0.886 ; logic_top:logic_top_inst|led:led_driver|counter[24] ; logic_top:logic_top_inst|led:led_driver|counter[16] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 1.919      ;
+; -0.886 ; logic_top:logic_top_inst|led:led_driver|counter[24] ; logic_top:logic_top_inst|led:led_driver|counter[17] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 1.919      ;
+; -0.886 ; logic_top:logic_top_inst|led:led_driver|counter[24] ; logic_top:logic_top_inst|led:led_driver|counter[18] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 1.919      ;
+; -0.886 ; logic_top:logic_top_inst|led:led_driver|counter[24] ; logic_top:logic_top_inst|led:led_driver|counter[19] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 1.919      ;
+; -0.886 ; logic_top:logic_top_inst|led:led_driver|counter[24] ; logic_top:logic_top_inst|led:led_driver|counter[20] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 1.919      ;
+; -0.886 ; logic_top:logic_top_inst|led:led_driver|counter[24] ; logic_top:logic_top_inst|led:led_driver|counter[21] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 1.919      ;
+; -0.886 ; logic_top:logic_top_inst|led:led_driver|counter[24] ; logic_top:logic_top_inst|led:led_driver|counter[22] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 1.919      ;
+; -0.882 ; logic_top:logic_top_inst|led:led_driver|counter[8]  ; logic_top:logic_top_inst|led:led_driver|counter[12] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.914      ;
+; -0.882 ; logic_top:logic_top_inst|led:led_driver|counter[8]  ; logic_top:logic_top_inst|led:led_driver|counter[14] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.914      ;
+; -0.882 ; logic_top:logic_top_inst|led:led_driver|counter[8]  ; logic_top:logic_top_inst|led:led_driver|counter[23] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.914      ;
+; -0.882 ; logic_top:logic_top_inst|led:led_driver|counter[8]  ; logic_top:logic_top_inst|led:led_driver|counter[24] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.914      ;
+; -0.882 ; logic_top:logic_top_inst|led:led_driver|counter[8]  ; logic_top:logic_top_inst|led:led_driver|counter[25] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.914      ;
+; -0.882 ; logic_top:logic_top_inst|led:led_driver|counter[8]  ; logic_top:logic_top_inst|led:led_driver|counter[26] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.914      ;
+; -0.882 ; logic_top:logic_top_inst|led:led_driver|counter[8]  ; logic_top:logic_top_inst|led:led_driver|counter[13] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.914      ;
+; -0.879 ; logic_top:logic_top_inst|led:led_driver|counter[7]  ; logic_top:logic_top_inst|led:led_driver|counter[15] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 1.912      ;
+; -0.879 ; logic_top:logic_top_inst|led:led_driver|counter[7]  ; logic_top:logic_top_inst|led:led_driver|counter[16] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 1.912      ;
+; -0.879 ; logic_top:logic_top_inst|led:led_driver|counter[7]  ; logic_top:logic_top_inst|led:led_driver|counter[17] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 1.912      ;
+; -0.879 ; logic_top:logic_top_inst|led:led_driver|counter[7]  ; logic_top:logic_top_inst|led:led_driver|counter[18] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 1.912      ;
+; -0.879 ; logic_top:logic_top_inst|led:led_driver|counter[7]  ; logic_top:logic_top_inst|led:led_driver|counter[19] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 1.912      ;
+; -0.879 ; logic_top:logic_top_inst|led:led_driver|counter[7]  ; logic_top:logic_top_inst|led:led_driver|counter[20] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 1.912      ;
+; -0.879 ; logic_top:logic_top_inst|led:led_driver|counter[7]  ; logic_top:logic_top_inst|led:led_driver|counter[21] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 1.912      ;
+; -0.879 ; logic_top:logic_top_inst|led:led_driver|counter[7]  ; logic_top:logic_top_inst|led:led_driver|counter[22] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 1.912      ;
+; -0.876 ; logic_top:logic_top_inst|led:led_driver|counter[10] ; logic_top:logic_top_inst|led:led_driver|counter[15] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 1.909      ;
+; -0.876 ; logic_top:logic_top_inst|led:led_driver|counter[10] ; logic_top:logic_top_inst|led:led_driver|counter[16] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 1.909      ;
+; -0.876 ; logic_top:logic_top_inst|led:led_driver|counter[10] ; logic_top:logic_top_inst|led:led_driver|counter[17] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 1.909      ;
+; -0.876 ; logic_top:logic_top_inst|led:led_driver|counter[10] ; logic_top:logic_top_inst|led:led_driver|counter[18] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 1.909      ;
++--------+-----------------------------------------------------+-----------------------------------------------------+--------------+-------------+--------------+------------+------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Fast Model Hold: 'CLOCK_50'                                                                                                                                                                                                             ;
++-------+-----------------------------------------------------------------------------+-----------------------------------------------------------------------------+--------------+-------------+--------------+------------+------------+
+; Slack ; From Node                                                                   ; To Node                                                                     ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++-------+-----------------------------------------------------------------------------+-----------------------------------------------------------------------------+--------------+-------------+--------------+------------+------------+
+; 0.244 ; logic_top:logic_top_inst|letter_selection_logic:lsl|letter_size[2]          ; logic_top:logic_top_inst|letter_size_register:lsr|letter_size_out[2]        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.396      ;
+; 0.244 ; logic_top:logic_top_inst|letter_size_register:lsr|letter_size_out[0]        ; logic_top:logic_top_inst|letter_symbols_register:lsr2|letter_symbols_out[0] ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.396      ;
+; 0.290 ; logic_top:logic_top_inst|letter_symbols_register:lsr2|letter_symbols_out[1] ; logic_top:logic_top_inst|letter_symbols_register:lsr2|letter_symbols_out[2] ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.442      ;
+; 0.299 ; logic_top:logic_top_inst|letter_size_register:lsr|letter_size_out[1]        ; logic_top:logic_top_inst|letter_symbols_register:lsr2|letter_symbols_out[0] ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.451      ;
+; 0.325 ; logic_top:logic_top_inst|letter_selection_logic:lsl|letter_symbols[3]       ; logic_top:logic_top_inst|letter_symbols_register:lsr2|letter_symbols_out[3] ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.477      ;
+; 0.326 ; logic_top:logic_top_inst|letter_selection_logic:lsl|letter_size[1]          ; logic_top:logic_top_inst|letter_size_register:lsr|letter_size_out[1]        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.478      ;
+; 0.327 ; logic_top:logic_top_inst|letter_selection_logic:lsl|letter_size[0]          ; logic_top:logic_top_inst|letter_size_register:lsr|letter_size_out[0]        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.479      ;
+; 0.356 ; logic_top:logic_top_inst|led:led_driver|counter[1]                          ; logic_top:logic_top_inst|led:led_driver|counter[1]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.508      ;
+; 0.356 ; logic_top:logic_top_inst|led:led_driver|counter[4]                          ; logic_top:logic_top_inst|led:led_driver|counter[4]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.508      ;
+; 0.358 ; logic_top:logic_top_inst|led:led_driver|counter[22]                         ; logic_top:logic_top_inst|led:led_driver|counter[22]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.510      ;
+; 0.360 ; logic_top:logic_top_inst|led:led_driver|counter[6]                          ; logic_top:logic_top_inst|led:led_driver|counter[6]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.512      ;
+; 0.360 ; logic_top:logic_top_inst|led:led_driver|counter[8]                          ; logic_top:logic_top_inst|led:led_driver|counter[8]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.512      ;
+; 0.360 ; logic_top:logic_top_inst|led:led_driver|counter[10]                         ; logic_top:logic_top_inst|led:led_driver|counter[10]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.512      ;
+; 0.361 ; logic_top:logic_top_inst|led:led_driver|counter[11]                         ; logic_top:logic_top_inst|led:led_driver|counter[11]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.513      ;
+; 0.362 ; logic_top:logic_top_inst|letter_selection_logic:lsl|letter_symbols[2]       ; logic_top:logic_top_inst|letter_symbols_register:lsr2|letter_symbols_out[2] ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.514      ;
+; 0.365 ; logic_top:logic_top_inst|letter_selection_logic:lsl|letter_symbols[1]       ; logic_top:logic_top_inst|letter_symbols_register:lsr2|letter_symbols_out[1] ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.517      ;
+; 0.367 ; logic_top:logic_top_inst|letter_size_register:lsr|letter_size_out[2]        ; logic_top:logic_top_inst|letter_symbols_register:lsr2|letter_symbols_out[0] ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.519      ;
+; 0.368 ; logic_top:logic_top_inst|led:led_driver|counter[20]                         ; logic_top:logic_top_inst|led:led_driver|counter[20]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.520      ;
+; 0.368 ; logic_top:logic_top_inst|led:led_driver|counter[21]                         ; logic_top:logic_top_inst|led:led_driver|counter[21]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.520      ;
+; 0.369 ; logic_top:logic_top_inst|led:led_driver|counter[0]                          ; logic_top:logic_top_inst|led:led_driver|counter[0]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.521      ;
+; 0.369 ; logic_top:logic_top_inst|led:led_driver|counter[15]                         ; logic_top:logic_top_inst|led:led_driver|counter[15]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.521      ;
+; 0.369 ; logic_top:logic_top_inst|led:led_driver|counter[17]                         ; logic_top:logic_top_inst|led:led_driver|counter[17]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.521      ;
+; 0.370 ; logic_top:logic_top_inst|led:led_driver|counter[2]                          ; logic_top:logic_top_inst|led:led_driver|counter[2]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.522      ;
+; 0.370 ; logic_top:logic_top_inst|led:led_driver|counter[3]                          ; logic_top:logic_top_inst|led:led_driver|counter[3]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.522      ;
+; 0.371 ; logic_top:logic_top_inst|led:led_driver|counter[5]                          ; logic_top:logic_top_inst|led:led_driver|counter[5]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.523      ;
+; 0.374 ; logic_top:logic_top_inst|led:led_driver|counter[7]                          ; logic_top:logic_top_inst|led:led_driver|counter[7]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.526      ;
+; 0.374 ; logic_top:logic_top_inst|led:led_driver|counter[9]                          ; logic_top:logic_top_inst|led:led_driver|counter[9]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.526      ;
+; 0.375 ; logic_top:logic_top_inst|letter_symbols_register:lsr2|letter_symbols_out[0] ; logic_top:logic_top_inst|letter_symbols_register:lsr2|letter_symbols_out[1] ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.527      ;
+; 0.378 ; logic_top:logic_top_inst|led:led_driver|counter[19]                         ; logic_top:logic_top_inst|led:led_driver|counter[19]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.530      ;
+; 0.379 ; logic_top:logic_top_inst|led:led_driver|counter[16]                         ; logic_top:logic_top_inst|led:led_driver|counter[16]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.531      ;
+; 0.380 ; logic_top:logic_top_inst|led:led_driver|counter[18]                         ; logic_top:logic_top_inst|led:led_driver|counter[18]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.532      ;
+; 0.382 ; logic_top:logic_top_inst|letter_selection_logic:lsl|letter_symbols[0]       ; logic_top:logic_top_inst|letter_symbols_register:lsr2|letter_symbols_out[0] ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.534      ;
+; 0.423 ; logic_top:logic_top_inst|letter_size_register:lsr|letter_size_out[0]        ; logic_top:logic_top_inst|letter_symbols_register:lsr2|letter_symbols_out[1] ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.575      ;
+; 0.425 ; logic_top:logic_top_inst|letter_size_register:lsr|letter_size_out[0]        ; logic_top:logic_top_inst|letter_symbols_register:lsr2|letter_symbols_out[2] ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.577      ;
+; 0.479 ; logic_top:logic_top_inst|letter_size_register:lsr|letter_size_out[1]        ; logic_top:logic_top_inst|letter_symbols_register:lsr2|letter_symbols_out[1] ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.631      ;
+; 0.481 ; logic_top:logic_top_inst|letter_size_register:lsr|letter_size_out[1]        ; logic_top:logic_top_inst|letter_symbols_register:lsr2|letter_symbols_out[2] ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.633      ;
+; 0.494 ; logic_top:logic_top_inst|led:led_driver|counter[1]                          ; logic_top:logic_top_inst|led:led_driver|counter[2]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.646      ;
+; 0.498 ; logic_top:logic_top_inst|led:led_driver|counter[10]                         ; logic_top:logic_top_inst|led:led_driver|counter[11]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.650      ;
+; 0.498 ; logic_top:logic_top_inst|led:led_driver|counter[6]                          ; logic_top:logic_top_inst|led:led_driver|counter[7]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.650      ;
+; 0.498 ; logic_top:logic_top_inst|led:led_driver|counter[8]                          ; logic_top:logic_top_inst|led:led_driver|counter[9]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.650      ;
+; 0.507 ; logic_top:logic_top_inst|led:led_driver|counter[15]                         ; logic_top:logic_top_inst|led:led_driver|counter[16]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.659      ;
+; 0.507 ; logic_top:logic_top_inst|led:led_driver|counter[17]                         ; logic_top:logic_top_inst|led:led_driver|counter[18]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.659      ;
+; 0.508 ; logic_top:logic_top_inst|led:led_driver|counter[21]                         ; logic_top:logic_top_inst|led:led_driver|counter[22]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.660      ;
+; 0.509 ; logic_top:logic_top_inst|led:led_driver|counter[0]                          ; logic_top:logic_top_inst|led:led_driver|counter[1]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.661      ;
+; 0.510 ; logic_top:logic_top_inst|led:led_driver|counter[3]                          ; logic_top:logic_top_inst|led:led_driver|counter[4]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.662      ;
+; 0.510 ; logic_top:logic_top_inst|led:led_driver|counter[2]                          ; logic_top:logic_top_inst|led:led_driver|counter[3]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.662      ;
+; 0.511 ; logic_top:logic_top_inst|led:led_driver|counter[5]                          ; logic_top:logic_top_inst|led:led_driver|counter[6]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.663      ;
+; 0.514 ; logic_top:logic_top_inst|led:led_driver|counter[7]                          ; logic_top:logic_top_inst|led:led_driver|counter[8]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.666      ;
+; 0.514 ; logic_top:logic_top_inst|led:led_driver|counter[9]                          ; logic_top:logic_top_inst|led:led_driver|counter[10]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.666      ;
+; 0.518 ; logic_top:logic_top_inst|led:led_driver|counter[19]                         ; logic_top:logic_top_inst|led:led_driver|counter[20]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.670      ;
+; 0.519 ; logic_top:logic_top_inst|led:led_driver|counter[16]                         ; logic_top:logic_top_inst|led:led_driver|counter[17]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.671      ;
+; 0.520 ; logic_top:logic_top_inst|led:led_driver|counter[18]                         ; logic_top:logic_top_inst|led:led_driver|counter[19]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.672      ;
+; 0.529 ; logic_top:logic_top_inst|led:led_driver|counter[1]                          ; logic_top:logic_top_inst|led:led_driver|counter[3]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.681      ;
+; 0.533 ; logic_top:logic_top_inst|led:led_driver|counter[6]                          ; logic_top:logic_top_inst|led:led_driver|counter[8]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.685      ;
+; 0.533 ; logic_top:logic_top_inst|led:led_driver|counter[8]                          ; logic_top:logic_top_inst|led:led_driver|counter[10]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.685      ;
+; 0.542 ; logic_top:logic_top_inst|letter_symbols_register:lsr2|letter_symbols_out[2] ; logic_top:logic_top_inst|letter_symbols_register:lsr2|letter_symbols_out[3] ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.694      ;
+; 0.542 ; logic_top:logic_top_inst|led:led_driver|counter[15]                         ; logic_top:logic_top_inst|led:led_driver|counter[17]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.694      ;
+; 0.542 ; logic_top:logic_top_inst|led:led_driver|counter[17]                         ; logic_top:logic_top_inst|led:led_driver|counter[19]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.694      ;
+; 0.544 ; logic_top:logic_top_inst|letter_size_register:lsr|letter_size_out[2]        ; logic_top:logic_top_inst|letter_symbols_register:lsr2|letter_symbols_out[1] ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.696      ;
+; 0.544 ; logic_top:logic_top_inst|led:led_driver|counter[0]                          ; logic_top:logic_top_inst|led:led_driver|counter[2]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.696      ;
+; 0.545 ; logic_top:logic_top_inst|led:led_driver|counter[2]                          ; logic_top:logic_top_inst|led:led_driver|counter[4]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.697      ;
+; 0.546 ; logic_top:logic_top_inst|letter_size_register:lsr|letter_size_out[2]        ; logic_top:logic_top_inst|letter_symbols_register:lsr2|letter_symbols_out[2] ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.698      ;
+; 0.546 ; logic_top:logic_top_inst|led:led_driver|counter[5]                          ; logic_top:logic_top_inst|led:led_driver|counter[7]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.698      ;
+; 0.549 ; logic_top:logic_top_inst|led:led_driver|counter[4]                          ; logic_top:logic_top_inst|led:led_driver|counter[5]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.701      ;
+; 0.549 ; logic_top:logic_top_inst|led:led_driver|counter[9]                          ; logic_top:logic_top_inst|led:led_driver|counter[11]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.701      ;
+; 0.549 ; logic_top:logic_top_inst|led:led_driver|counter[7]                          ; logic_top:logic_top_inst|led:led_driver|counter[9]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.701      ;
+; 0.554 ; logic_top:logic_top_inst|led:led_driver|counter[16]                         ; logic_top:logic_top_inst|led:led_driver|counter[18]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.706      ;
+; 0.555 ; logic_top:logic_top_inst|led:led_driver|counter[18]                         ; logic_top:logic_top_inst|led:led_driver|counter[20]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.707      ;
+; 0.561 ; logic_top:logic_top_inst|led:led_driver|counter[20]                         ; logic_top:logic_top_inst|led:led_driver|counter[21]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.713      ;
+; 0.564 ; logic_top:logic_top_inst|led:led_driver|counter[1]                          ; logic_top:logic_top_inst|led:led_driver|counter[4]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.716      ;
+; 0.568 ; logic_top:logic_top_inst|led:led_driver|counter[8]                          ; logic_top:logic_top_inst|led:led_driver|counter[11]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.720      ;
+; 0.568 ; logic_top:logic_top_inst|led:led_driver|counter[6]                          ; logic_top:logic_top_inst|led:led_driver|counter[9]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.720      ;
+; 0.577 ; logic_top:logic_top_inst|led:led_driver|counter[15]                         ; logic_top:logic_top_inst|led:led_driver|counter[18]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.729      ;
+; 0.577 ; logic_top:logic_top_inst|led:led_driver|counter[17]                         ; logic_top:logic_top_inst|led:led_driver|counter[20]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.729      ;
+; 0.579 ; logic_top:logic_top_inst|led:led_driver|counter[0]                          ; logic_top:logic_top_inst|led:led_driver|counter[3]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.731      ;
+; 0.581 ; logic_top:logic_top_inst|led:led_driver|counter[5]                          ; logic_top:logic_top_inst|led:led_driver|counter[8]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.733      ;
+; 0.584 ; logic_top:logic_top_inst|led:led_driver|counter[4]                          ; logic_top:logic_top_inst|led:led_driver|counter[6]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.736      ;
+; 0.584 ; logic_top:logic_top_inst|led:led_driver|counter[7]                          ; logic_top:logic_top_inst|led:led_driver|counter[10]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.736      ;
+; 0.589 ; logic_top:logic_top_inst|led:led_driver|counter[16]                         ; logic_top:logic_top_inst|led:led_driver|counter[19]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.741      ;
+; 0.596 ; logic_top:logic_top_inst|led:led_driver|counter[20]                         ; logic_top:logic_top_inst|led:led_driver|counter[22]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.748      ;
+; 0.600 ; logic_top:logic_top_inst|led:led_driver|counter[25]                         ; logic_top:logic_top_inst|led:led_driver|led_out                             ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.752      ;
+; 0.603 ; logic_top:logic_top_inst|led:led_driver|counter[6]                          ; logic_top:logic_top_inst|led:led_driver|counter[10]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.755      ;
+; 0.604 ; logic_top:logic_top_inst|led:led_driver|counter[3]                          ; logic_top:logic_top_inst|led:led_driver|counter[5]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.756      ;
+; 0.612 ; logic_top:logic_top_inst|led:led_driver|counter[19]                         ; logic_top:logic_top_inst|led:led_driver|counter[21]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.764      ;
+; 0.612 ; logic_top:logic_top_inst|led:led_driver|counter[15]                         ; logic_top:logic_top_inst|led:led_driver|counter[19]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.764      ;
+; 0.614 ; logic_top:logic_top_inst|led:led_driver|counter[0]                          ; logic_top:logic_top_inst|led:led_driver|counter[4]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.766      ;
+; 0.616 ; logic_top:logic_top_inst|led:led_driver|counter[5]                          ; logic_top:logic_top_inst|led:led_driver|counter[9]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.768      ;
+; 0.619 ; logic_top:logic_top_inst|letter_size_register:lsr|letter_size_out[0]        ; logic_top:logic_top_inst|letter_symbols_register:lsr2|letter_symbols_out[3] ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.771      ;
+; 0.619 ; logic_top:logic_top_inst|led:led_driver|counter[4]                          ; logic_top:logic_top_inst|led:led_driver|counter[7]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.771      ;
+; 0.619 ; logic_top:logic_top_inst|led:led_driver|counter[7]                          ; logic_top:logic_top_inst|led:led_driver|counter[11]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.771      ;
+; 0.624 ; logic_top:logic_top_inst|led:led_driver|counter[16]                         ; logic_top:logic_top_inst|led:led_driver|counter[20]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.776      ;
+; 0.635 ; logic_top:logic_top_inst|led:led_driver|counter[23]                         ; logic_top:logic_top_inst|led:led_driver|led_out                             ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.787      ;
+; 0.638 ; logic_top:logic_top_inst|led:led_driver|counter[6]                          ; logic_top:logic_top_inst|led:led_driver|counter[11]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.790      ;
+; 0.639 ; logic_top:logic_top_inst|led:led_driver|counter[3]                          ; logic_top:logic_top_inst|led:led_driver|counter[6]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.791      ;
+; 0.639 ; logic_top:logic_top_inst|led:led_driver|counter[2]                          ; logic_top:logic_top_inst|led:led_driver|counter[5]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.791      ;
+; 0.647 ; logic_top:logic_top_inst|led:led_driver|counter[19]                         ; logic_top:logic_top_inst|led:led_driver|counter[22]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.799      ;
+; 0.647 ; logic_top:logic_top_inst|led:led_driver|counter[15]                         ; logic_top:logic_top_inst|led:led_driver|counter[20]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.799      ;
+; 0.649 ; logic_top:logic_top_inst|led:led_driver|counter[18]                         ; logic_top:logic_top_inst|led:led_driver|counter[21]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.801      ;
+; 0.651 ; logic_top:logic_top_inst|led:led_driver|counter[5]                          ; logic_top:logic_top_inst|led:led_driver|counter[10]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.803      ;
+; 0.654 ; logic_top:logic_top_inst|led:led_driver|counter[4]                          ; logic_top:logic_top_inst|led:led_driver|counter[8]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.806      ;
++-------+-----------------------------------------------------------------------------+-----------------------------------------------------------------------------+--------------+-------------+--------------+------------+------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Fast Model Minimum Pulse Width: 'CLOCK_50'                                                                                                                      ;
++--------+--------------+----------------+------------------+----------+------------+-----------------------------------------------------------------------------+
+; Slack  ; Actual Width ; Required Width ; Type             ; Clock    ; Clock Edge ; Target                                                                      ;
++--------+--------------+----------------+------------------+----------+------------+-----------------------------------------------------------------------------+
+; -1.380 ; 1.000        ; 2.380          ; Port Rate        ; CLOCK_50 ; Rise       ; CLOCK_50                                                                    ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[0]                          ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[0]                          ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[10]                         ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[10]                         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[11]                         ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[11]                         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[12]                         ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[12]                         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[13]                         ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[13]                         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[14]                         ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[14]                         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[15]                         ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[15]                         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[16]                         ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[16]                         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[17]                         ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[17]                         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[18]                         ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[18]                         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[19]                         ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[19]                         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[1]                          ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[1]                          ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[20]                         ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[20]                         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[21]                         ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[21]                         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[22]                         ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[22]                         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[23]                         ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[23]                         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[24]                         ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[24]                         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[25]                         ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[25]                         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[26]                         ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[26]                         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[2]                          ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[2]                          ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[3]                          ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[3]                          ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[4]                          ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[4]                          ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[5]                          ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[5]                          ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[6]                          ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[6]                          ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[7]                          ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[7]                          ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[8]                          ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[8]                          ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[9]                          ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|counter[9]                          ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|led_out                             ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|led:led_driver|led_out                             ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|letter_selection_logic:lsl|letter_size[0]          ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|letter_selection_logic:lsl|letter_size[0]          ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|letter_selection_logic:lsl|letter_size[1]          ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|letter_selection_logic:lsl|letter_size[1]          ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|letter_selection_logic:lsl|letter_size[2]          ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|letter_selection_logic:lsl|letter_size[2]          ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|letter_selection_logic:lsl|letter_symbols[0]       ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|letter_selection_logic:lsl|letter_symbols[0]       ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|letter_selection_logic:lsl|letter_symbols[1]       ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|letter_selection_logic:lsl|letter_symbols[1]       ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|letter_selection_logic:lsl|letter_symbols[2]       ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|letter_selection_logic:lsl|letter_symbols[2]       ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|letter_selection_logic:lsl|letter_symbols[3]       ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|letter_selection_logic:lsl|letter_symbols[3]       ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|letter_size_register:lsr|letter_size_out[0]        ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|letter_size_register:lsr|letter_size_out[0]        ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|letter_size_register:lsr|letter_size_out[1]        ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|letter_size_register:lsr|letter_size_out[1]        ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|letter_size_register:lsr|letter_size_out[2]        ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|letter_size_register:lsr|letter_size_out[2]        ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|letter_symbols_register:lsr2|letter_symbols_out[0] ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|letter_symbols_register:lsr2|letter_symbols_out[0] ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|letter_symbols_register:lsr2|letter_symbols_out[1] ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|letter_symbols_register:lsr2|letter_symbols_out[1] ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|letter_symbols_register:lsr2|letter_symbols_out[2] ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|letter_symbols_register:lsr2|letter_symbols_out[2] ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|letter_symbols_register:lsr2|letter_symbols_out[3] ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top:logic_top_inst|letter_symbols_register:lsr2|letter_symbols_out[3] ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; CLOCK_50|combout                                                            ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; CLOCK_50|combout                                                            ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; CLOCK_50~clkctrl|inclk[0]                                                   ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; CLOCK_50~clkctrl|inclk[0]                                                   ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; CLOCK_50~clkctrl|outclk                                                     ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; CLOCK_50~clkctrl|outclk                                                     ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top_inst|led_driver|counter[0]|clk                                    ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top_inst|led_driver|counter[0]|clk                                    ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top_inst|led_driver|counter[10]|clk                                   ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top_inst|led_driver|counter[10]|clk                                   ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top_inst|led_driver|counter[11]|clk                                   ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top_inst|led_driver|counter[11]|clk                                   ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top_inst|led_driver|counter[12]|clk                                   ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; logic_top_inst|led_driver|counter[12]|clk                                   ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; logic_top_inst|led_driver|counter[13]|clk                                   ;
++--------+--------------+----------------+------------------+----------+------------+-----------------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------+
+; Setup Times                                                             ;
++-----------+------------+--------+--------+------------+-----------------+
+; Data Port ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
++-----------+------------+--------+--------+------------+-----------------+
+; SW[*]     ; CLOCK_50   ; -0.564 ; -0.564 ; Rise       ; CLOCK_50        ;
+;  SW[0]    ; CLOCK_50   ; -0.564 ; -0.564 ; Rise       ; CLOCK_50        ;
+;  SW[1]    ; CLOCK_50   ; -0.623 ; -0.623 ; Rise       ; CLOCK_50        ;
+;  SW[2]    ; CLOCK_50   ; -0.699 ; -0.699 ; Rise       ; CLOCK_50        ;
++-----------+------------+--------+--------+------------+-----------------+
+
+
++-----------------------------------------------------------------------+
+; Hold Times                                                            ;
++-----------+------------+-------+-------+------------+-----------------+
+; Data Port ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++-----------+------------+-------+-------+------------+-----------------+
+; SW[*]     ; CLOCK_50   ; 0.829 ; 0.829 ; Rise       ; CLOCK_50        ;
+;  SW[0]    ; CLOCK_50   ; 0.701 ; 0.701 ; Rise       ; CLOCK_50        ;
+;  SW[1]    ; CLOCK_50   ; 0.769 ; 0.769 ; Rise       ; CLOCK_50        ;
+;  SW[2]    ; CLOCK_50   ; 0.829 ; 0.829 ; Rise       ; CLOCK_50        ;
++-----------+------------+-------+-------+------------+-----------------+
+
+
++-----------------------------------------------------------------------+
+; Clock to Output Times                                                 ;
++-----------+------------+-------+-------+------------+-----------------+
+; Data Port ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++-----------+------------+-------+-------+------------+-----------------+
+; LEDR[*]   ; CLOCK_50   ; 4.576 ; 4.576 ; Rise       ; CLOCK_50        ;
+;  LEDR[16] ; CLOCK_50   ; 4.576 ; 4.576 ; Rise       ; CLOCK_50        ;
++-----------+------------+-------+-------+------------+-----------------+
+
+
++-----------------------------------------------------------------------+
+; Minimum Clock to Output Times                                         ;
++-----------+------------+-------+-------+------------+-----------------+
+; Data Port ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++-----------+------------+-------+-------+------------+-----------------+
+; LEDR[*]   ; CLOCK_50   ; 4.576 ; 4.576 ; Rise       ; CLOCK_50        ;
+;  LEDR[16] ; CLOCK_50   ; 4.576 ; 4.576 ; Rise       ; CLOCK_50        ;
++-----------+------------+-------+-------+------------+-----------------+
+
+
++----------------------------------------------------+
+; Propagation Delay                                  ;
++------------+-------------+-------+----+----+-------+
+; Input Port ; Output Port ; RR    ; RF ; FR ; FF    ;
++------------+-------------+-------+----+----+-------+
+; KEY[0]     ; LEDG[0]     ; 5.715 ;    ;    ; 5.715 ;
+; KEY[1]     ; LEDG[1]     ; 5.320 ;    ;    ; 5.320 ;
++------------+-------------+-------+----+----+-------+
+
+
++----------------------------------------------------+
+; Minimum Propagation Delay                          ;
++------------+-------------+-------+----+----+-------+
+; Input Port ; Output Port ; RR    ; RF ; FR ; FF    ;
++------------+-------------+-------+----+----+-------+
+; KEY[0]     ; LEDG[0]     ; 5.715 ;    ;    ; 5.715 ;
+; KEY[1]     ; LEDG[1]     ; 5.320 ;    ;    ; 5.320 ;
++------------+-------------+-------+----+----+-------+
+
+
++-------------------------------------------------------------------------------+
+; Multicorner Timing Analysis Summary                                           ;
++------------------+---------+-------+----------+---------+---------------------+
+; Clock            ; Setup   ; Hold  ; Recovery ; Removal ; Minimum Pulse Width ;
++------------------+---------+-------+----------+---------+---------------------+
+; Worst-case Slack ; -3.691  ; 0.244 ; N/A      ; N/A     ; -1.380              ;
+;  CLOCK_50        ; -3.691  ; 0.244 ; N/A      ; N/A     ; -1.380              ;
+; Design-wide TNS  ; -92.482 ; 0.0   ; 0.0      ; 0.0     ; -43.38              ;
+;  CLOCK_50        ; -92.482 ; 0.000 ; N/A      ; N/A     ; -43.380             ;
++------------------+---------+-------+----------+---------+---------------------+
+
+
++-------------------------------------------------------------------------+
+; Setup Times                                                             ;
++-----------+------------+--------+--------+------------+-----------------+
+; Data Port ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
++-----------+------------+--------+--------+------------+-----------------+
+; SW[*]     ; CLOCK_50   ; -0.481 ; -0.481 ; Rise       ; CLOCK_50        ;
+;  SW[0]    ; CLOCK_50   ; -0.481 ; -0.481 ; Rise       ; CLOCK_50        ;
+;  SW[1]    ; CLOCK_50   ; -0.623 ; -0.623 ; Rise       ; CLOCK_50        ;
+;  SW[2]    ; CLOCK_50   ; -0.699 ; -0.699 ; Rise       ; CLOCK_50        ;
++-----------+------------+--------+--------+------------+-----------------+
+
+
++-----------------------------------------------------------------------+
+; Hold Times                                                            ;
++-----------+------------+-------+-------+------------+-----------------+
+; Data Port ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++-----------+------------+-------+-------+------------+-----------------+
+; SW[*]     ; CLOCK_50   ; 1.032 ; 1.032 ; Rise       ; CLOCK_50        ;
+;  SW[0]    ; CLOCK_50   ; 0.758 ; 0.758 ; Rise       ; CLOCK_50        ;
+;  SW[1]    ; CLOCK_50   ; 0.896 ; 0.896 ; Rise       ; CLOCK_50        ;
+;  SW[2]    ; CLOCK_50   ; 1.032 ; 1.032 ; Rise       ; CLOCK_50        ;
++-----------+------------+-------+-------+------------+-----------------+
+
+
++-----------------------------------------------------------------------+
+; Clock to Output Times                                                 ;
++-----------+------------+-------+-------+------------+-----------------+
+; Data Port ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++-----------+------------+-------+-------+------------+-----------------+
+; LEDR[*]   ; CLOCK_50   ; 8.154 ; 8.154 ; Rise       ; CLOCK_50        ;
+;  LEDR[16] ; CLOCK_50   ; 8.154 ; 8.154 ; Rise       ; CLOCK_50        ;
++-----------+------------+-------+-------+------------+-----------------+
+
+
++-----------------------------------------------------------------------+
+; Minimum Clock to Output Times                                         ;
++-----------+------------+-------+-------+------------+-----------------+
+; Data Port ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++-----------+------------+-------+-------+------------+-----------------+
+; LEDR[*]   ; CLOCK_50   ; 4.576 ; 4.576 ; Rise       ; CLOCK_50        ;
+;  LEDR[16] ; CLOCK_50   ; 4.576 ; 4.576 ; Rise       ; CLOCK_50        ;
++-----------+------------+-------+-------+------------+-----------------+
+
+
++----------------------------------------------------+
+; Progagation Delay                                  ;
++------------+-------------+-------+----+----+-------+
+; Input Port ; Output Port ; RR    ; RF ; FR ; FF    ;
++------------+-------------+-------+----+----+-------+
+; KEY[0]     ; LEDG[0]     ; 9.958 ;    ;    ; 9.958 ;
+; KEY[1]     ; LEDG[1]     ; 9.216 ;    ;    ; 9.216 ;
++------------+-------------+-------+----+----+-------+
+
+
++----------------------------------------------------+
+; Minimum Progagation Delay                          ;
++------------+-------------+-------+----+----+-------+
+; Input Port ; Output Port ; RR    ; RF ; FR ; FF    ;
++------------+-------------+-------+----+----+-------+
+; KEY[0]     ; LEDG[0]     ; 5.715 ;    ;    ; 5.715 ;
+; KEY[1]     ; LEDG[1]     ; 5.320 ;    ;    ; 5.320 ;
++------------+-------------+-------+----+----+-------+
+
+
++-------------------------------------------------------------------+
+; Setup Transfers                                                   ;
++------------+----------+----------+----------+----------+----------+
+; From Clock ; To Clock ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++------------+----------+----------+----------+----------+----------+
+; CLOCK_50   ; CLOCK_50 ; 1836     ; 0        ; 0        ; 0        ;
++------------+----------+----------+----------+----------+----------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
+
+
++-------------------------------------------------------------------+
+; Hold Transfers                                                    ;
++------------+----------+----------+----------+----------+----------+
+; From Clock ; To Clock ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++------------+----------+----------+----------+----------+----------+
+; CLOCK_50   ; CLOCK_50 ; 1836     ; 0        ; 0        ; 0        ;
++------------+----------+----------+----------+----------+----------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
+
+
+---------------
+; Report TCCS ;
+---------------
+No dedicated SERDES Transmitter circuitry present in device or used in design
+
+
+---------------
+; Report RSKM ;
+---------------
+No dedicated SERDES Receiver circuitry present in device or used in design
+
+
++------------------------------------------------+
+; Unconstrained Paths                            ;
++---------------------------------+-------+------+
+; Property                        ; Setup ; Hold ;
++---------------------------------+-------+------+
+; Illegal Clocks                  ; 0     ; 0    ;
+; Unconstrained Clocks            ; 0     ; 0    ;
+; Unconstrained Input Ports       ; 5     ; 5    ;
+; Unconstrained Input Port Paths  ; 65    ; 65   ;
+; Unconstrained Output Ports      ; 3     ; 3    ;
+; Unconstrained Output Port Paths ; 3     ; 3    ;
++---------------------------------+-------+------+
+
+
++------------------------------------+
+; TimeQuest Timing Analyzer Messages ;
++------------------------------------+
+Info: *******************************************************************
+Info: Running Quartus II 64-Bit TimeQuest Timing Analyzer
+    Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+    Info: Processing started: Tue Sep 30 20:24:40 2025
+Info: Command: quartus_sta part4 -c part4
+Info: qsta_default_script.tcl version: #1
+Warning (20028): Parallel compilation is not licensed and has been disabled
+Info (21077): Low junction temperature is 0 degrees C
+Info (21077): High junction temperature is 85 degrees C
+Critical Warning (332012): Synopsys Design Constraints File file not found: 'part4.sdc'. A Synopsys Design Constraints File is required by the TimeQuest Timing Analyzer to get proper timing constraints. Without it, the Compiler will not properly optimize the design.
+Info (332142): No user constrained base clocks found in the design. Calling "derive_clocks -period 1.0"
+Info (332105): Deriving Clocks
+    Info (332105): create_clock -period 1.000 -name CLOCK_50 CLOCK_50
+Info: Found TIMEQUEST_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS = ON
+Info: Analyzing Slow Model
+Critical Warning (332148): Timing requirements not met
+Info (332146): Worst-case setup slack is -3.691
+    Info (332119):     Slack End Point TNS Clock 
+    Info (332119): ========= ============= =====================
+    Info (332119):    -3.691       -92.482 CLOCK_50 
+Info (332146): Worst-case hold slack is 0.526
+    Info (332119):     Slack End Point TNS Clock 
+    Info (332119): ========= ============= =====================
+    Info (332119):     0.526         0.000 CLOCK_50 
+Info (332140): No Recovery paths to report
+Info (332140): No Removal paths to report
+Info (332146): Worst-case minimum pulse width slack is -1.380
+    Info (332119):     Slack End Point TNS Clock 
+    Info (332119): ========= ============= =====================
+    Info (332119):    -1.380       -43.380 CLOCK_50 
+Info (332001): The selected device family is not supported by the report_metastability command.
+Info: Analyzing Fast Model
+Critical Warning (332148): Timing requirements not met
+Info (332146): Worst-case setup slack is -1.225
+    Info (332119):     Slack End Point TNS Clock 
+    Info (332119): ========= ============= =====================
+    Info (332119):    -1.225       -25.901 CLOCK_50 
+Info (332146): Worst-case hold slack is 0.244
+    Info (332119):     Slack End Point TNS Clock 
+    Info (332119): ========= ============= =====================
+    Info (332119):     0.244         0.000 CLOCK_50 
+Info (332140): No Recovery paths to report
+Info (332140): No Removal paths to report
+Info (332146): Worst-case minimum pulse width slack is -1.380
+    Info (332119):     Slack End Point TNS Clock 
+    Info (332119): ========= ============= =====================
+    Info (332119):    -1.380       -43.380 CLOCK_50 
+Info (332001): The selected device family is not supported by the report_metastability command.
+Info (332102): Design is not fully constrained for setup requirements
+Info (332102): Design is not fully constrained for hold requirements
+Info: Quartus II 64-Bit TimeQuest Timing Analyzer was successful. 0 errors, 4 warnings
+    Info: Peak virtual memory: 4546 megabytes
+    Info: Processing ended: Tue Sep 30 20:24:41 2025
+    Info: Elapsed time: 00:00:01
+    Info: Total CPU time (on all processors): 00:00:00
+
+

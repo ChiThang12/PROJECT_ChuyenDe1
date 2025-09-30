@@ -1,0 +1,178 @@
+|part4
+CLOCK_50 => clk.IN1
+SW[0] => letter[0].IN1
+SW[1] => letter[1].IN1
+SW[2] => letter[2].IN1
+KEY[0] => rst_n.IN1
+KEY[1] => LEDG[1].DATAIN
+LEDR[16] <= logic_top:logic_top_inst.led_out
+LEDR[17] <= <GND>
+LEDG[0] <= rst_n.DB_MAX_OUTPUT_PORT_TYPE
+LEDG[1] <= KEY[1].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|part4|logic_top:logic_top_inst
+clk => clk.IN5
+rst_n => rst_n.IN5
+letter[0] => letter[0].IN1
+letter[1] => letter[1].IN1
+letter[2] => letter[2].IN1
+led_out <= led:led_driver.led_out
+
+
+|part4|logic_top:logic_top_inst|letter_selection_logic:lsl
+clk => letter_symbols[0]~reg0.CLK
+clk => letter_symbols[1]~reg0.CLK
+clk => letter_symbols[2]~reg0.CLK
+clk => letter_symbols[3]~reg0.CLK
+clk => letter_size[0]~reg0.CLK
+clk => letter_size[1]~reg0.CLK
+clk => letter_size[2]~reg0.CLK
+clk => letter_size[3]~reg0.CLK
+rst_n => letter_symbols[0]~reg0.ACLR
+rst_n => letter_symbols[1]~reg0.ACLR
+rst_n => letter_symbols[2]~reg0.ACLR
+rst_n => letter_symbols[3]~reg0.ACLR
+rst_n => letter_size[0]~reg0.ACLR
+rst_n => letter_size[1]~reg0.ACLR
+rst_n => letter_size[2]~reg0.ACLR
+rst_n => letter_size[3]~reg0.ACLR
+letter[0] => Decoder0.IN2
+letter[1] => Decoder0.IN1
+letter[2] => Decoder0.IN0
+letter_size[0] <= letter_size[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+letter_size[1] <= letter_size[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+letter_size[2] <= letter_size[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+letter_size[3] <= letter_size[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+letter_symbols[0] <= letter_symbols[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+letter_symbols[1] <= letter_symbols[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+letter_symbols[2] <= letter_symbols[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+letter_symbols[3] <= letter_symbols[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|part4|logic_top:logic_top_inst|letter_size_register:lsr
+clk => letter_size_out[0]~reg0.CLK
+clk => letter_size_out[1]~reg0.CLK
+clk => letter_size_out[2]~reg0.CLK
+clk => letter_size_out[3]~reg0.CLK
+rst_n => letter_size_out[0]~reg0.ACLR
+rst_n => letter_size_out[1]~reg0.ACLR
+rst_n => letter_size_out[2]~reg0.ACLR
+rst_n => letter_size_out[3]~reg0.ACLR
+en => letter_size_out[0]~reg0.ENA
+en => letter_size_out[3]~reg0.ENA
+en => letter_size_out[2]~reg0.ENA
+en => letter_size_out[1]~reg0.ENA
+letter_size_in[0] => letter_size_out[0]~reg0.DATAIN
+letter_size_in[1] => letter_size_out[1]~reg0.DATAIN
+letter_size_in[2] => letter_size_out[2]~reg0.DATAIN
+letter_size_in[3] => letter_size_out[3]~reg0.DATAIN
+letter_size_out[0] <= letter_size_out[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+letter_size_out[1] <= letter_size_out[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+letter_size_out[2] <= letter_size_out[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+letter_size_out[3] <= letter_size_out[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|part4|logic_top:logic_top_inst|letter_symbols_register:lsr2
+clk => letter_symbols_out[0]~reg0.CLK
+clk => letter_symbols_out[1]~reg0.CLK
+clk => letter_symbols_out[2]~reg0.CLK
+clk => letter_symbols_out[3]~reg0.CLK
+rst_n => letter_symbols_out[0]~reg0.ACLR
+rst_n => letter_symbols_out[1]~reg0.ACLR
+rst_n => letter_symbols_out[2]~reg0.ACLR
+rst_n => letter_symbols_out[3]~reg0.ACLR
+load => letter_symbols_out.OUTPUTSELECT
+load => letter_symbols_out.OUTPUTSELECT
+load => letter_symbols_out.OUTPUTSELECT
+load => letter_symbols_out.OUTPUTSELECT
+shift => letter_symbols_out.OUTPUTSELECT
+shift => letter_symbols_out.OUTPUTSELECT
+shift => letter_symbols_out.OUTPUTSELECT
+shift => letter_symbols_out.OUTPUTSELECT
+letter_symbols_in[0] => letter_symbols_out.DATAB
+letter_symbols_in[1] => letter_symbols_out.DATAB
+letter_symbols_in[2] => letter_symbols_out.DATAB
+letter_symbols_in[3] => letter_symbols_out.DATAB
+letter_symbols_out[0] <= letter_symbols_out[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+letter_symbols_out[1] <= letter_symbols_out[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+letter_symbols_out[2] <= letter_symbols_out[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+letter_symbols_out[3] <= letter_symbols_out[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|part4|logic_top:logic_top_inst|counter_2bit:cnt
+clk => count[0]~reg0.CLK
+clk => count[1]~reg0.CLK
+rst_n => count[0]~reg0.ACLR
+rst_n => count[1]~reg0.ACLR
+en => count.OUTPUTSELECT
+en => count.OUTPUTSELECT
+clr => count.OUTPUTSELECT
+clr => count.OUTPUTSELECT
+count[0] <= count[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+count[1] <= count[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|part4|logic_top:logic_top_inst|led:led_driver
+clk => led_out~reg0.CLK
+clk => counter[0].CLK
+clk => counter[1].CLK
+clk => counter[2].CLK
+clk => counter[3].CLK
+clk => counter[4].CLK
+clk => counter[5].CLK
+clk => counter[6].CLK
+clk => counter[7].CLK
+clk => counter[8].CLK
+clk => counter[9].CLK
+clk => counter[10].CLK
+clk => counter[11].CLK
+clk => counter[12].CLK
+clk => counter[13].CLK
+clk => counter[14].CLK
+clk => counter[15].CLK
+clk => counter[16].CLK
+clk => counter[17].CLK
+clk => counter[18].CLK
+clk => counter[19].CLK
+clk => counter[20].CLK
+clk => counter[21].CLK
+clk => counter[22].CLK
+clk => counter[23].CLK
+clk => counter[24].CLK
+clk => counter[25].CLK
+clk => counter[26].CLK
+rst_n => counter[0].ACLR
+rst_n => counter[1].ACLR
+rst_n => counter[2].ACLR
+rst_n => counter[3].ACLR
+rst_n => counter[4].ACLR
+rst_n => counter[5].ACLR
+rst_n => counter[6].ACLR
+rst_n => counter[7].ACLR
+rst_n => counter[8].ACLR
+rst_n => counter[9].ACLR
+rst_n => counter[10].ACLR
+rst_n => counter[11].ACLR
+rst_n => counter[12].ACLR
+rst_n => counter[13].ACLR
+rst_n => counter[14].ACLR
+rst_n => counter[15].ACLR
+rst_n => counter[16].ACLR
+rst_n => counter[17].ACLR
+rst_n => counter[18].ACLR
+rst_n => counter[19].ACLR
+rst_n => counter[20].ACLR
+rst_n => counter[21].ACLR
+rst_n => counter[22].ACLR
+rst_n => counter[23].ACLR
+rst_n => counter[24].ACLR
+rst_n => counter[25].ACLR
+rst_n => counter[26].ACLR
+rst_n => led_out~reg0.ACLR
+letter => always0.IN1
+letter => Decoder0.IN0
+letter => always0.IN1
+led_out <= led_out~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+

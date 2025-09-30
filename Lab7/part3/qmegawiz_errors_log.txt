@@ -1,0 +1,7 @@
+
+
+D:/Quartus/ChuyenDe/Lab7/part3/LPM_counter.v
+
+Sep 30 07AM:38:40>: Variation file name (LPM_counter) is identical with the name of one of its sub-components.
+
+MegaWizard Plug-In Manager will rename the variation to "LPM_countea" to prevent compilation errors

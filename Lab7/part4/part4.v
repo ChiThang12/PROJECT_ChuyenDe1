@@ -1,0 +1,74 @@
+module part4#(
+	parameter COUNT_1S = 26'd50_000_000
+)(
+	input  CLOCK_50,
+	input  [0:0]SW,
+	output  [6:0] HEX0
+);
+	
+	
+	wire reset = SW[0];
+	reg [25:0] counter_1s;
+	reg [3:0] digit_counter;
+	reg temp;
+	
+	
+	always @(posedge CLOCK_50 or negedge reset) begin
+		if(!reset) begin
+			counter_1s <= 0;
+		end else begin
+			if(counter_1s == COUNT_1S-1) begin
+				counter_1s<=26'b0;
+			end else begin
+				counter_1s <= counter_1s + 1'b1;
+			end
+		end
+	end
+	
+	always @(posedge CLOCK_50 or negedge reset) begin
+		if(!reset) begin
+			digit_counter <=0;
+		end else begin
+			if(counter_1s == COUNT_1S - 1)begin
+				if(digit_counter == 4'd9) begin
+					digit_counter <= 4'b0;
+				end else begin 
+					digit_counter <= digit_counter + 1'b1;				
+				end
+			end else begin
+				digit_counter <= digit_counter;
+			
+			end
+		end
+		
+	end
+	
+	
+	char_7seg char(
+		.C(digit_counter),
+		.Display(HEX0)
+	);
+endmodule
+
+
+// Hiển thị LED 7 đoạn
+module char_7seg(
+    input  [3:0] C,
+    output reg [6:0] Display
+);
+    always @(*) begin
+        case (C)
+            4'b0000 : Display = 7'b1000000;  // 0
+            4'b0001 : Display = 7'b1111001;  // 1
+            4'b0010 : Display = 7'b0100100;  // 2
+            4'b0011 : Display = 7'b0110000;  // 3
+            4'b0100 : Display = 7'b0011001;  // 4
+            4'b0101 : Display = 7'b0010010;  // 5
+            4'b0110 : Display = 7'b0000010;  // 6
+            4'b0111 : Display = 7'b1111000;  // 7
+            4'b1000 : Display = 7'b0000000;  // 8
+            4'b1001 : Display = 7'b0010000;  // 9
+            default : Display = 7'b1111111;  // blank
+        endcase
+    end
+endmodule

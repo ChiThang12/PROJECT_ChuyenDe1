@@ -1,0 +1,11 @@
+module part2 (
+    input [7:0] X,  
+    input [7:0] Y,   
+    input s,       
+    output [7:0] M   
+);
+
+    
+    assign M = (~s & X) | (s & Y);
+
+endmodule

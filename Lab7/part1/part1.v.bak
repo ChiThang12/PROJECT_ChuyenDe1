@@ -1,0 +1,157 @@
+module part1 (
+    input wire clk,
+    input wire rst_n,
+    input wire en,
+
+    output wire [15:0] Q
+);
+
+    wire [15:0] T_i;
+    assign T_i[0]   = 1'b1; // T0 luôn là 1 để TFF0 toggle mỗi xung clock
+
+   // Các bit tiếp theo
+    assign T_i[1]  = Q[0] & en;
+    assign T_i[2]  = Q[1] & Q[0] & en;
+    assign T_i[3]  = Q[2] & Q[1] & Q[0] & en;
+    assign T_i[4]  = Q[3] & Q[2] & Q[1] & Q[0] & en;
+    assign T_i[5]  = Q[4] & Q[3] & Q[2] & Q[1] & Q[0] & en;
+    assign T_i[6]  = Q[5] & Q[4] & Q[3] & Q[2] & Q[1] & Q[0] & en;
+    assign T_i[7]  = Q[6] & Q[5] & Q[4] & Q[3] & Q[2] & Q[1] & Q[0] & en;
+    assign T_i[8]  = Q[7] & Q[6] & Q[5] & Q[4] & Q[3] & Q[2] & Q[1] & Q[0] & en;
+    assign T_i[9]  = Q[8] & Q[7] & Q[6] & Q[5] & Q[4] & Q[3] & Q[2] & Q[1] & Q[0] & en;
+    assign T_i[10] = Q[9] & Q[8] & Q[7] & Q[6] & Q[5] & Q[4] & Q[3] & Q[2] & Q[1] & Q[0] & en;
+    assign T_i[11] = Q[10]& Q[9] & Q[8] & Q[7] & Q[6] & Q[5] & Q[4] & Q[3] & Q[2] & Q[1] & Q[0] & en;
+    assign T_i[12] = Q[11]& Q[10]& Q[9] & Q[8] & Q[7] & Q[6] & Q[5] & Q[4] & Q[3] & Q[2] & Q[1] & Q[0] & en;
+    assign T_i[13] = Q[12]& Q[11]& Q[10]& Q[9] & Q[8] & Q[7] & Q[6] & Q[5] & Q[4] & Q[3] & Q[2] & Q[1] & Q[0] & en;
+    assign T_i[14] = Q[13]& Q[12]& Q[11]& Q[10]& Q[9] & Q[8] & Q[7] & Q[6] & Q[5] & Q[4] & Q[3] & Q[2] & Q[1] & Q[0] & en;
+    assign T_i[15] = Q[14]& Q[13]& Q[12]& Q[11]& Q[10]& Q[9] & Q[8] & Q[7] & Q[6] & Q[5] & Q[4] & Q[3] & Q[2] & Q[1] & Q[0] & en;
+
+    genvar i;
+    generate
+        for (i = 0; i < 16; i = i + 1) begin : TFF_ARRAY
+            TFF tff_inst (
+                .clk(clk),
+                .T(T_i[i]),
+                .rst_n(rst_n),
+                .en(en),
+                .Q(Q[i])
+            );
+        end
+    endgenerate
+
+
+endmodule
+
+module TFF(
+    input wire clk,
+    input wire T,
+    input wire rst_n,
+    input wire en,
+
+    output reg Q,
+    output wire Qn
+);
+
+    assign Qn = ~Q;
+
+    always @(posedge clk or negedge rst_n) begin
+        if (!rst_n)
+            Q <= 1'b0;
+        else if (en)
+            Q <= Q ^ T;  // Toggle nếu T=1, giữ nguyên nếu T=0
+    end
+
+endmodule
+
+// Hiển thị LED 7 đoạn
+module char_7seg(
+    input  [3:0] C,
+    output reg [6:0] Display
+);
+    always @(*) begin
+        case (C)
+            4'b0000 : Display = 7'b1000000;  // 0
+            4'b0001 : Display = 7'b1111001;  // 1
+            4'b0010 : Display = 7'b0100100;  // 2
+            4'b0011 : Display = 7'b0110000;  // 3
+            4'b0100 : Display = 7'b0011001;  // 4
+            4'b0101 : Display = 7'b0010010;  // 5
+            4'b0110 : Display = 7'b0000010;  // 6
+            4'b0111 : Display = 7'b1111000;  // 7
+            4'b1000 : Display = 7'b0000000;  // 8
+            4'b1001 : Display = 7'b0010000;  // 9
+            default : Display = 7'b1111111;  // blank
+        endcase
+    end
+endmodule
+
+
+
+/*
+`timescale 1ns/1ps
+
+module tb_part1;
+
+    // Inputs
+    reg clk;
+    reg rst_n;
+    reg en;
+
+    // Outputs
+    wire [15:0] Q;
+
+    // Instantiate the DUT
+    part1 uut (
+        .clk(clk),
+        .rst_n(rst_n),
+        .en(en),
+        .Q(Q)
+    );
+
+    // Clock generation: 10ns period => 100 MHz
+    initial clk = 0;
+    always #5 clk = ~clk; // Toggle every 5ns -> period 10ns
+
+    initial begin
+        $dumpfile("tb_part1.vcd");
+        $dumpvars(0, tb_part1);
+    end
+    // Test stimulus
+    initial begin
+        // Initialize inputs
+        rst_n = 0;
+        en = 0;
+
+        // Apply reset
+        #12;
+        rst_n = 1;      // Release reset
+        en = 1;         // Enable counting
+
+        // Let counter run for some cycles
+        #500;
+
+        // Disable counting
+        en = 0;
+        #50;
+
+        // Re-enable counting
+        en = 1;
+        #100;
+
+        // Apply reset again
+        rst_n = 0;
+        #10;
+        rst_n = 1;
+
+        #200; // Observe counting after reset
+
+        $finish; // End simulation
+    end
+
+    // Monitor Q changes
+    initial begin
+        $monitor("Time=%0t | rst_n=%b en=%b | Q=%h", $time, rst_n, en, Q);
+    end
+
+endmodule
+*/

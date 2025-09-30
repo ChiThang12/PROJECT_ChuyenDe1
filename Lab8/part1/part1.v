@@ -1,0 +1,37 @@
+module counter_modk#(
+    parameter n = 8;
+    parameter k = 10
+)(
+    input clk,
+    input rst,
+    output reg [n-1:0] count
+);
+
+    always @(posedge clk or negedge rst) begin
+        if(!rst) begin
+            count <= 0;
+        end else if(count == k-1) begin
+            count <= 0;
+        end else begin
+            count <= count + 1;
+        end
+        
+    end
+
+endmodule
+
+module part1 (
+    input  wire [1:0] KEY,      // KEY0 = reset_n, KEY1 = clock
+    output wire [7:0] LEDR      // hiển thị Q trên LED
+);
+
+    wire clock = KEY[1];
+    wire reset_n = KEY[0];
+
+    counter_modk #(8, 10) u0 (   // 8-bit, modulo-10
+        .clk(clock),
+        .rst(reset_n),
+        .count(LEDR)
+    );
+
+endmodule

@@ -1,0 +1,315 @@
+// ==========================================================
+// 1. Letter selection logic: ánh xạ 3-bit sang Morse
+// ==========================================================
+module letter_selection_logic(
+    input  wire       clk,
+    input  wire       rst_n,
+    input  wire [2:0] letter,
+    output reg  [3:0] letter_size,
+    output reg  [3:0] letter_symbols
+);
+    always @(posedge clk or negedge rst_n) begin
+        if (!rst_n) begin
+            letter_size    <= 4'd0;
+            letter_symbols <= 4'd0;
+        end else begin
+            case (letter)
+                3'b000: begin // A (.-)
+                    letter_size    <= 4'd2;
+                    letter_symbols <= 4'b01;   // .-
+                end
+                3'b001: begin // B (-...)
+                    letter_size    <= 4'd4;
+                    letter_symbols <= 4'b1000; // -...
+                end
+                3'b010: begin // C (-.-.)
+                    letter_size    <= 4'd4;
+                    letter_symbols <= 4'b1010; // -.-.
+                end
+                3'b011: begin // D (-..)
+                    letter_size    <= 4'd3;
+                    letter_symbols <= 4'b100;  // -..
+                end
+                3'b100: begin // E (.)
+                    letter_size    <= 4'd1;
+                    letter_symbols <= 4'b0;    // .
+                end
+                3'b101: begin // F (..-.)
+                    letter_size    <= 4'd4;
+                    letter_symbols <= 4'b0010; // ..-.
+                end
+                3'b110: begin // G (--.)
+                    letter_size    <= 4'd3;
+                    letter_symbols <= 4'b110;  // --.
+                end
+                3'b111: begin // H (....)
+                    letter_size    <= 4'd4;
+                    letter_symbols <= 4'b0000; // ....
+                end
+                default: begin
+                    letter_size    <= 4'd0;
+                    letter_symbols <= 4'd0;
+                end
+            endcase
+        end
+    end
+endmodule
+
+// ==========================================================
+// 2. Register lưu kích thước Morse
+// ==========================================================
+module letter_size_register(
+    input clk,
+    input rst_n,
+    input en,
+    input [3:0] letter_size_in,
+    output reg [3:0] letter_size_out
+);
+    always @(posedge clk or negedge rst_n) begin
+        if (!rst_n)
+            letter_size_out <= 4'd0;
+        else if (en)
+            letter_size_out <= letter_size_in;
+    end
+endmodule
+
+// ==========================================================
+// 3. Register lưu ký hiệu Morse (load và shift)
+// ==========================================================
+module letter_symbols_register(
+    input clk,
+    input rst_n,
+    input load,         // nạp dữ liệu mới
+    input shift,        // dịch dữ liệu
+    input [3:0] letter_symbols_in,
+    output reg [3:0] letter_symbols_out
+);
+    always @(posedge clk or negedge rst_n) begin
+        if (!rst_n)
+            letter_symbols_out <= 4'b0000;
+        else if (load)
+            letter_symbols_out <= letter_symbols_in;
+        else if (shift)
+            letter_symbols_out <= letter_symbols_out << 1; // shift left
+    end
+endmodule
+
+// ==========================================================
+// 4. Counter 2-bit
+// ==========================================================
+module counter_2bit(
+    input clk,
+    input rst_n,
+    input en,
+    input clr,
+    output reg [1:0] count
+);
+    always @(posedge clk or negedge rst_n) begin
+        if (!rst_n)
+            count <= 2'b00;
+        else if (clr)
+            count <= 2'b00;
+        else if (en)
+            count <= count + 1;
+    end
+endmodule
+
+// ==========================================================
+// 5. Logic điều khiển + LED phát Morse
+// ==========================================================
+module part4(
+	input CLOCK_50,
+	input [2:0] SW,
+    input [1:0] KEY,
+    output [17:16] LEDR,
+    output [1:0] LEDG
+);
+
+    wire clk = CLOCK_50;
+    wire rst_n = KEY[0];
+    wire [2:0] letter = SW[2:0];
+    wire led_out;
+
+   
+
+    logic_top logic_top_inst (
+        .clk(clk),
+        .rst_n(rst_n),
+        .letter(letter),
+        .led_out(led_out)
+    );
+
+    assign LEDR[16] = led_out;
+    assign LEDG = KEY;
+
+endmodule
+
+
+
+module logic_top(
+    input  wire       clk,
+    input  wire       rst_n,
+    input  wire [2:0] letter,
+    output wire       led_out
+);
+    // Internal signals
+    wire [3:0] letter_size;
+    wire [3:0] letter_symbols;
+    wire [3:0] letter_size_reg;
+    wire [3:0] letter_symbols_reg;
+    wire [1:0] count;
+    wire en, load, shift, clr;
+
+    // Instance mapping
+    letter_selection_logic lsl (
+        .clk(clk), .rst_n(rst_n), .letter(letter),
+        .letter_size(letter_size),
+        .letter_symbols(letter_symbols)
+    );
+
+    letter_size_register lsr (
+        .clk(clk), .rst_n(rst_n), .en(en),
+        .letter_size_in(letter_size),
+        .letter_size_out(letter_size_reg)
+    );
+
+    letter_symbols_register lsr2 (
+        .clk(clk), .rst_n(rst_n), .load(load), .shift(shift),
+        .letter_symbols_in(letter_symbols),
+        .letter_symbols_out(letter_symbols_reg)
+    );
+
+    counter_2bit cnt (
+        .clk(clk), .rst_n(rst_n), .en(shift), .clr(clr),
+        .count(count)
+    );
+
+    // Control signals
+    assign en   = (letter_size_reg == 0);  // load new size khi rỗng
+    assign load = en;
+    assign shift= ~en;                     // shift khi có dữ liệu
+    assign clr  = (count == letter_size_reg); // hết ký hiệu thì reset counter
+
+    // LED hiển thị Morse: lấy bit MSB
+    led led_driver (
+        .clk(clk),
+        .rst_n(rst_n),
+        .letter(letter_symbols_reg[3]), // lấy bit ra để hiển thị
+        .led_out(led_out)
+    );
+endmodule
+
+// ==========================================================
+// LED Driver (0.5s cho dot, 1.5s cho dash)
+// ==========================================================
+module led(
+    input  wire clk,
+    input  wire rst_n,
+    input  wire letter,   // 0=dot, 1=dash
+    output reg  led_out
+);
+    parameter COUNT_0_5S = 27'd25_000_000;  // 0.5s @ 50MHz
+    parameter COUNT_1_5S = 27'd75_000_000;  // 1.5s @ 50MHz
+
+    reg [26:0] counter;
+
+    always @(posedge clk or negedge rst_n) begin
+        if (!rst_n)
+            counter <= 27'd0;
+        else if (led_out) begin
+            if ((letter == 1'b0 && counter < COUNT_0_5S) ||
+                (letter == 1'b1 && counter < COUNT_1_5S))
+                counter <= counter + 1'b1;
+            else
+                counter <= 27'd0;
+        end else
+            counter <= 27'd0;
+    end
+
+    always @(posedge clk or negedge rst_n) begin
+        if (!rst_n)
+            led_out <= 1'b0;
+        else begin
+            case (letter)
+                1'b0: led_out <= (counter < COUNT_0_5S);
+                1'b1: led_out <= (counter < COUNT_1_5S);
+                default: led_out <= 1'b0;
+            endcase
+        end
+    end
+endmodule
+
+
+
+// `timescale 1ns/1ps
+
+// module tb_logic_top;
+
+//     reg clk;
+//     reg rst_n;
+//     reg [2:0] letter;
+//     wire led_out;
+
+//     // Clock 50 MHz
+//     initial begin
+//         clk = 0;
+//         forever #10 clk = ~clk; // 20ns period = 50MHz
+//     end
+
+//     // DUT
+//     logic_top dut (
+//         .clk(clk),
+//         .rst_n(rst_n),
+//         .letter(letter),
+//         .led_out(led_out)
+//     );
+
+//     // Stimulus
+//     initial begin
+//         // waveform dump
+//         $dumpfile("tb_logic_top.vcd");
+//         $dumpvars(0, tb_logic_top);
+
+//         // Reset
+//         rst_n = 0;
+//         letter = 3'b000;
+//         #100;
+//         rst_n = 1;
+
+//         // Test A (.-)
+//         letter = 3'b000;
+//         #500_000_000;  // chờ vài trăm ms để quan sát
+
+//         // Test B (-...)
+//         letter = 3'b001;
+//         #1_000_000_000;
+
+//         // Test C (-.-.)
+//         letter = 3'b010;
+//         #1_000_000_000;
+
+//         // Test D (-..)
+//         letter = 3'b011;
+//         #800_000_000;
+
+//         // Test E (.)
+//         letter = 3'b100;
+//         #400_000_000;
+
+//         // Test F (..-.)
+//         letter = 3'b101;
+//         #1_000_000_000;
+
+//         // Test G (--.)
+//         letter = 3'b110;
+//         #800_000_000;
+
+//         // Test H (....)
+//         letter = 3'b111;
+//         #1_000_000_000;
+
+//         $finish;
+//     end
+
+// endmodule
+

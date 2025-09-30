@@ -1,0 +1,28 @@
+|part4
+SW[0] => clk.IN3
+SW[1] => D.IN3
+LEDR[0] <= <GND>
+LEDR[1] <= <GND>
+LEDG[0] <= D_latch:u1.Q
+LEDG[1] <= D_ff_pos:u2.Q
+LEDG[2] <= D_ff_neg:u3.Q
+
+
+|part4|D_latch:u1
+D => Q$latch.DATAIN
+clk => Q$latch.LATCH_ENABLE
+Q <= Q$latch.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|part4|D_ff_pos:u2
+D => Q~reg0.DATAIN
+clk => Q~reg0.CLK
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|part4|D_ff_neg:u3
+D => Q~reg0.DATAIN
+clk => Q~reg0.CLK
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+

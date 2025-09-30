@@ -1,0 +1,93 @@
+// Verilog code to display different 5-letter words on eight 7-segment displays.
+// Implements multiplexers and character display modules to scroll words.
+
+module part6 (
+    input [17:0] SW,
+    output [17:0] LEDR,
+    output [6:0] HEX7, HEX6, HEX5, HEX4,
+    output [6:0] HEX3, HEX2, HEX1, HEX0
+);
+
+    wire [2:0] Ch_Sel;
+    wire [2:0] Ch1, Ch2, Ch3, Ch4, Ch5, Blank;
+    wire [2:0] H7_Ch, H6_Ch, H5_Ch, H4_Ch;
+    wire [2:0] H3_Ch, H2_Ch, H1_Ch, H0_Ch;
+
+    assign LEDR = SW;
+    assign Ch_Sel = SW[17:15];
+    assign Ch1 = SW[14:12];
+    assign Ch2 = SW[11:9];
+    assign Ch3 = SW[8:6];
+    assign Ch4 = SW[5:3];
+    assign Ch5 = SW[2:0];
+    assign Blank = 3'b111;  // blank for 7-segment display
+
+    // Instantiate mux_3bit_8to1 for each HEX display
+    mux_3bit_8to1 M7 (Ch_Sel, Blank, Blank, Blank, Ch1, Ch2, Ch3, Ch4, Ch5, H7_Ch);
+    mux_3bit_8to1 M6 (Ch_Sel, Blank, Blank, Ch1, Ch2, Ch3, Ch4, Ch5, Blank, H6_Ch);
+    mux_3bit_8to1 M5 (Ch_Sel, Blank, Ch1, Ch2, Ch3, Ch4, Ch5, Blank, Blank, H5_Ch);
+    mux_3bit_8to1 M4 (Ch_Sel, Ch1, Ch2, Ch3, Ch4, Ch5, Blank, Blank, Blank, H4_Ch);
+    mux_3bit_8to1 M3 (Ch_Sel, Ch2, Ch3, Ch4, Ch5, Blank, Blank, Blank, Ch1, H3_Ch);
+    mux_3bit_8to1 M2 (Ch_Sel, Ch3, Ch4, Ch5, Blank, Blank, Blank, Ch1, Ch2, H2_Ch);
+    mux_3bit_8to1 M1 (Ch_Sel, Ch4, Ch5, Blank, Blank, Blank, Ch1, Ch2, Ch3, H1_Ch);
+    mux_3bit_8to1 M0 (Ch_Sel, Ch5, Blank, Blank, Blank, Ch1, Ch2, Ch3, Ch4, H0_Ch);
+
+    // Instantiate char_7seg to drive the HEX displays
+    char_7seg H7 (H7_Ch, HEX7);
+    char_7seg H6 (H6_Ch, HEX6);
+    char_7seg H5 (H5_Ch, HEX5);
+    char_7seg H4 (H4_Ch, HEX4);
+    char_7seg H3 (H3_Ch, HEX3);
+    char_7seg H2 (H2_Ch, HEX2);
+    char_7seg H1 (H1_Ch, HEX1);
+    char_7seg H0 (H0_Ch, HEX0);
+
+endmodule
+
+// 3-bit wide 8-to-1 multiplexer
+module mux_3bit_8to1 (
+    input [2:0] S,
+    input [2:0] G1, G2, G3, G4, G5, G6, G7, G8,
+    output [2:0] M
+);
+
+    wire [1:6] m_0, m_1, m_2;
+
+    // 8-to-1 multiplexer for bit 0
+    assign m_0[1] = (~S[0] & G1[0]) | (S[0] & G2[0]);
+    assign m_0[2] = (~S[0] & G3[0]) | (S[0] & G4[0]);
+    assign m_0[3] = (~S[0] & G5[0]) | (S[0] & G6[0]);
+    assign m_0[4] = (~S[0] & G7[0]) | (S[0] & G8[0]);
+    assign m_0[5] = (~S[1] & m_0[1]) | (S[1] & m_0[2]);
+    assign m_0[6] = (~S[1] & m_0[3]) | (S[1] & m_0[4]);
+    assign M[0] = (~S[2] & m_0[5]) | (S[2] & m_0[6]);
+
+    // 8-to-1 multiplexer for bit 1
+    assign m_1[1] = (~S[0] & G1[1]) | (S[0] & G2[1]);
+    assign m_1[2] = (~S[0] & G3[1]) | (S[0] & G4[1]);
+    assign m_1[3] = (~S[0] & G5[1]) | (S[0] & G6[1]);
+    assign m_1[4] = (~S[0] & G7[1]) | (S[0] & G8[1]);
+    assign m_1[5] = (~S[1] & m_1[1]) | (S[1] & m_1[2]);
+    assign m_1[6] = (~S[1] & m_1[3]) | (S[1] & m_1[4]);
+    assign M[1] = (~S[2] & m_1[5]) | (S[2] & m_1[6]);
+
+    // 8-to-1 multiplexer for bit 2
+    assign m_2[1] = (~S[0] & G1[2]) | (S[0] & G2[2]);
+    assign m_2[2] = (~S[0] & G3[2]) | (S[0] & G4[2]);
+    assign m_2[3] = (~S[0] & G5[2]) | (S[0] & G6[2]);
+    assign m_2[4] = (~S[0] & G7[2]) | (S[0] & G8[2]);
+    assign m_2[5] = (~S[1] & m_2[1]) | (S[1] & m_2[2]);
+    assign m_2[6] = (~S[1] & m_2[3]) | (S[1] & m_2[4]);
+    assign M[2] = (~S[2] & m_2[5]) | (S[2] & m_2[6]);
+
+endmodule
+
+// Character to 7-segment display driver
+module char_7seg (
+    input [2:0] C,
+    output [6:0] Display
+);
+
+
+
+endmodule

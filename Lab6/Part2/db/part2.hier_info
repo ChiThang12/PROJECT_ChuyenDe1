@@ -1,0 +1,26 @@
+|part2
+SW[0] => r1.IN0
+SW[0] => s1.IN0
+SW[0] => LEDR[0].DATAIN
+SW[1] => reset_n.IN1
+SW[2] => s1.IN1
+SW[2] => LEDR[2].DATAIN
+SW[2] => r1.IN1
+LEDR[0] <= SW[0].DB_MAX_OUTPUT_PORT_TYPE
+LEDR[1] <= reset_n.DB_MAX_OUTPUT_PORT_TYPE
+LEDR[2] <= SW[2].DB_MAX_OUTPUT_PORT_TYPE
+LEDG[0] <= SR_latch:sr_latch.Q
+LEDG[1] <= SR_latch:sr_latch.Qn
+
+
+|part2|SR_latch:sr_latch
+S => always0.IN0
+S => always0.IN0
+R => always0.IN1
+R => always0.IN1
+reset_n => Q.IN1
+reset_n => Q.OUTPUTSELECT
+Q <= Q$latch.DB_MAX_OUTPUT_PORT_TYPE
+Qn <= Q$latch.DB_MAX_OUTPUT_PORT_TYPE
+
+

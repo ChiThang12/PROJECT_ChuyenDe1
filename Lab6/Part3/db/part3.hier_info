@@ -1,0 +1,53 @@
+|part3
+SW[0] => clk.IN1
+SW[1] => reset_n.IN2
+SW[2] => D.IN1
+LEDR[0] <= clk.DB_MAX_OUTPUT_PORT_TYPE
+LEDR[1] <= reset_n.DB_MAX_OUTPUT_PORT_TYPE
+LEDR[2] <= D.DB_MAX_OUTPUT_PORT_TYPE
+LEDG[0] <= D_latch:slave_latch.Q
+LEDG[1] <= D_latch:slave_latch.Qn
+
+
+|part3|D_latch:master_latch
+clk => comb.IN0
+clk => comb.IN0
+reset_n => reset_n.IN1
+D => comb.IN1
+D => comb.IN1
+Q <= SR_latch:sr_latch.Q
+Qn <= SR_latch:sr_latch.Qn
+
+
+|part3|D_latch:master_latch|SR_latch:sr_latch
+S => always0.IN0
+S => always0.IN0
+R => always0.IN1
+R => always0.IN1
+reset_n => Q.IN1
+reset_n => Q.OUTPUTSELECT
+Q <= Q$latch.DB_MAX_OUTPUT_PORT_TYPE
+Qn <= Q$latch.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|part3|D_latch:slave_latch
+clk => comb.IN0
+clk => comb.IN0
+reset_n => reset_n.IN1
+D => comb.IN1
+D => comb.IN1
+Q <= SR_latch:sr_latch.Q
+Qn <= SR_latch:sr_latch.Qn
+
+
+|part3|D_latch:slave_latch|SR_latch:sr_latch
+S => always0.IN0
+S => always0.IN0
+R => always0.IN1
+R => always0.IN1
+reset_n => Q.IN1
+reset_n => Q.OUTPUTSELECT
+Q <= Q$latch.DB_MAX_OUTPUT_PORT_TYPE
+Qn <= Q$latch.DB_MAX_OUTPUT_PORT_TYPE
+
+

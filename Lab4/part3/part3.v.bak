@@ -1,0 +1,74 @@
+module small_gate(
+	input wire x,
+	input wire y,
+	input wire s,
+	output wire m);
+
+assign m = (~s&x)|(s&y);
+endmodule 
+
+module part3(
+	input wire [17:0] SW,
+	output wire [2:0] LEDG,
+	output wire [17:0] LEDR
+);
+
+wire [2:0] uv_0;
+wire [2:0] wx_1;
+wire [2:0] uvwx_0;
+wire [2:0] M;
+
+genvar i;
+generate 
+for(i = 0; i<3;i=i+1) begin: generate_small_gate_1
+
+	small_gate u1(
+	.U(SW[i]),
+	.V(SW[i+3]),
+	.S(SW[15]), // S0
+	.m(uv_0[i]));
+	end 
+	endgenerate
+
+generate 
+for(i=0; i<3;i=i+1) begin: generate_small_gate_2
+	
+	small_gate u2(
+	.W(SW[i+6]),
+	.X(SW[i+9]),
+	.S(SW[15]), // S0
+	.m(wx_1[i])
+	);
+	end
+	endgenerate
+	
+generate 
+for(i=0; i<3; i=i+1) begin: generate_small_gate
+	
+	small_gate(
+		.uv_0[i],
+		.wx_1[i],
+		.S(SW[16]), // S1
+		.m(uvwx_0[i])
+	);
+	end
+	endgenerate
+generate 
+for(i=0; i<3; i=i+1) begin: generate_small_gate
+	
+	small_gate(
+		.uvwx_0[i],
+		.Y(SW[i+12]),
+		.S(SW[17]),
+		.,(M[i])
+	);
+	end
+	endgenerate
+	
+	assign LEDG = M;
+	assign LEDR = SW;
+	endmodule
+	
+	
+	
+	
